@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="50665E91-4AC6-5A99-39C8-E1029EDF9369" name="Receta_Ingrediente">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Receta_RecetaId" id="622075B1-8E51-A73C-09E8-6A1A7CF309F9">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B645B4AE-2BCD-498C-9AAA-4A1DF3CB3649" referredColumn="24C539DA-ACA0-D573-1845-F0946F9F2AB8"/>
+</associations>
+</Column>
+<Column name="Ingrediente_IngredienteId" id="CB4430FD-4A61-8D42-E719-7F94A3868CD5">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A4D1EC6C-054C-C32D-D911-D48923D59FEF" referredColumn="352080EB-1EC6-DC98-414E-63B9FB475C90"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8974D6F8-B81D-8E0B-A84B-29B53C583D15" name="Receta_Ingrediente_PK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="622075B1-8E51-A73C-09E8-6A1A7CF309F9"/>
+<colUsage columnID="CB4430FD-4A61-8D42-E719-7F94A3868CD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="04006563-CB9C-D380-457C-7C67BF77C6A3" name="Receta_Ingrediente_Receta_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>BA6505E5-30B8-5390-64E3-CF7C37AA1E01</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="622075B1-8E51-A73C-09E8-6A1A7CF309F9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="440A8709-84EC-2F34-9109-5107515A7ABA" name="Receta_Ingrediente_Ingrediente_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>BA6505E5-30B8-5390-64E3-CF7C37AA1E01</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB4430FD-4A61-8D42-E719-7F94A3868CD5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

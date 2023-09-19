@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="panaderia" id="ACB3AE90-0483-FC4C-D1C1-DFAD8B7C47F1" version="3.5">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 03:36:29 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>ACB3AE90-0483-FC4C-D1C1-DFAD8B7C47F1</designId>
+</OSDM_Design>

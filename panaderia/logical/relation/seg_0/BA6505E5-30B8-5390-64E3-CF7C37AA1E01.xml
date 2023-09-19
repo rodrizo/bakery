@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Receta_Ingrediente" directorySegmentName="seg_0" id="BA6505E5-30B8-5390-64E3-CF7C37AA1E01">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:23:56 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<engineerTo>
+<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>490EF73B-3B0E-646D-649A-6F2F65C171EE</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F7DB1148-258E-CC43-59C2-743F60BEB2A9</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

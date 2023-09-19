@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DEEFA42E-B6E5-9CFC-10A7-C6DB7EC84715" name="Ingrediente">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>F7DB1148-258E-CC43-59C2-743F60BEB2A9</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IngredienteId" id="352080EB-1EC6-DC98-414E-63B9FB475C90">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>57C2935A-095A-7871-24BE-DD5C4FBFB914</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="51240306-7999-7298-1A88-59DB5DC58C4E">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>EA3CF9A5-7A19-0122-2E69-3B258D5207FB</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Proveedor" id="13D9E83E-7396-4AFE-531C-177D0E8481FB">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>0137BF8A-8D3E-195F-024F-5D6AFD3541ED</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CostoUnitario" id="F062A5D7-3893-5ECE-1234-AD1CD45C0AA0">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>AADE793B-6304-6628-412E-B4AA341131B0</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FechaCompra" id="037BF621-95A4-0225-654F-C933BCD2EADB">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>416291D2-0502-1C9B-A54A-2661234F92E5</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IsActive" id="5E4DA287-DC1A-5CAC-C6E5-A30EDB4DC7B2">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>CAAEA541-76F7-4DBD-5EF9-8B482727062E</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B771F9B5-C099-E3EA-FF36-75CABA3F4108" name="Ingrediente_PK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-09-19 04:29:50 UTC</createdTime>
+<generatorID>C9AF70C7-0DEA-C9E8-D650-08B42F2F68B8</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="352080EB-1EC6-DC98-414E-63B9FB475C90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
