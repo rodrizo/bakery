@@ -87,6 +87,23 @@
 <ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Receta_RecetaId" id="32DDCEAA-9204-4533-06A8-79142C0ED753">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:39:47 UTC</createdTime>
+<generatorID>30DC6652-8EE4-238C-B7D7-89BFAB91C113</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1B630050-2BD6-D917-DBB8-4F609F7B1592" referredColumn="24C539DA-ACA0-D573-1845-F0946F9F2AB8"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F9F4331C-6447-F950-A349-F1A2E8E41873" name="Pan_PK">
@@ -99,6 +116,28 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="FC41E152-33AA-05A9-2372-59AF6C5D7FE2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D1C30F25-3D14-210E-BCF2-41613A00E836" name="Pan__IDX">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:39:47 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>5E2CC480-4AE9-B2CE-F38A-5561299A2D5E</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="32DDCEAA-9204-4533-06A8-79142C0ED753"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BCFD3767-A212-93F2-5639-B98312674556" name="Pan_Recetav1">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:39:47 UTC</createdTime>
+<generatorID>5E2CC480-4AE9-B2CE-F38A-5561299A2D5E</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32DDCEAA-9204-4533-06A8-79142C0ED753"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

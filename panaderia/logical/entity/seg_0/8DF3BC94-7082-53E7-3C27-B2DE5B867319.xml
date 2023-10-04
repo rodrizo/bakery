@@ -124,7 +124,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -132,8 +132,9 @@
 <createdBy>Rodney Rizo</createdBy>
 <createdTime>2023-09-19 04:04:28 UTC</createdTime>
 <ownerDesignName>panaderia</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="true"/>
+<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

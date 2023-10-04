@@ -70,14 +70,31 @@
 <dataTypeSize>1 BYTE</dataTypeSize>
 <ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="PanId" id="9FBF3D1C-D983-F459-8451-0BBC82C8D510">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:35:44 UTC</createdTime>
+<generatorID>5E2CC480-4AE9-B2CE-F38A-5561299A2D5E</generatorID>
+<ownerDesignName>panaderia</ownerDesignName>
+<engineerTo>
+<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>A5BA6BEA-93DF-857A-242B-4488F286FE33</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="C60FD201-B9E1-3979-A834-0C9A933E8839" name="Receta PK">
 <createdBy>Rodney Rizo</createdBy>
 <createdTime>2023-09-19 03:59:23 UTC</createdTime>
 <ownerDesignName>panaderia</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="true"/>
+<item key="4EFB0752-C79E-8D26-329A-13B4278C05BD" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

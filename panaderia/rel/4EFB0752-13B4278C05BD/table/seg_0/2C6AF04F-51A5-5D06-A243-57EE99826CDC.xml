@@ -97,7 +97,7 @@
 <ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Sucursal_SucursalId" id="0FA141A5-BECC-7F5A-9E87-E9B5D70ADF17">
+<Column name="SucursalId" id="0FA141A5-BECC-7F5A-9E87-E9B5D70ADF17">
 <createdBy>Rodney Rizo</createdBy>
 <createdTime>2023-09-19 04:29:50 UTC</createdTime>
 <generatorID>A557EB3C-1560-9940-3843-4C068B9E2E29</generatorID>
@@ -106,7 +106,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

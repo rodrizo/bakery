@@ -37,6 +37,30 @@
 <colAssociation fkAssociation="A4D1EC6C-054C-C32D-D911-D48923D59FEF" referredColumn="352080EB-1EC6-DC98-414E-63B9FB475C90"/>
 </associations>
 </Column>
+<Column name="Cantidad" id="ABC8BA52-9282-ECDE-3997-87B47CFD252D">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:49:21 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="27489160-2D36-DF41-7F10-27BB1106F194">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-10-04 04:49:21 UTC</createdTime>
+<ownerDesignName>panaderia</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8974D6F8-B81D-8E0B-A84B-29B53C583D15" name="Receta_Ingrediente_PK">
