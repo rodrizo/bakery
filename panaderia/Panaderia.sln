@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panaderia", "Panaderia\Panaderia.csproj", "{097C2F43-40C6-4211-96EB-4BD0A42FEEF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{090B0CCA-59EA-4BCC-876C-E2D52F2A1570}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{097C2F43-40C6-4211-96EB-4BD0A42FEEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097C2F43-40C6-4211-96EB-4BD0A42FEEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097C2F43-40C6-4211-96EB-4BD0A42FEEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097C2F43-40C6-4211-96EB-4BD0A42FEEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090B0CCA-59EA-4BCC-876C-E2D52F2A1570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090B0CCA-59EA-4BCC-876C-E2D52F2A1570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090B0CCA-59EA-4BCC-876C-E2D52F2A1570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090B0CCA-59EA-4BCC-876C-E2D52F2A1570}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53D09429-87CF-4C90-B34E-1551DF491D57}
+	EndGlobalSection
+EndGlobal
