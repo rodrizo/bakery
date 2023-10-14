@@ -25,12 +25,12 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
        
        --Creando receta inmediatamente para luego solo añadir detalles
        INSERT INTO Recetas VALUES ((SELECT MAX(RecetaId)+1 FROM Recetas),NULL, 1, (SELECT MAX(PanId) FROM Panes));
-        p_salida:='Nueva Receta creada con exito';  
+        p_salida:='1';  
        COMMIT;
        
        EXCEPTION
        WHEN OTHERS THEN
-        p_salida:='No se pudo ingresar el nuevo pan';
+        p_salida:='0';
        ROLLBACK;
     END agregar_pan;
     
@@ -41,11 +41,12 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
     BEGIN
         INSERT INTO Ingredientes VALUES ((SELECT MAX(IngredienteId)+1 FROM Ingredientes)
         ,Nombre,Proveedor, CostoUnitario, FechaCompra, 1);
+        p_salida:='1';  
         COMMIT;
         
        EXCEPTION
        WHEN OTHERS THEN
-        p_salida:='No se pudo ingresar el nuevo ingrediente';
+        p_salida:='0';
        ROLLBACK;
     END agregar_ingrediente;
     
@@ -55,11 +56,12 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
     BEGIN
         INSERT INTO Sucursales VALUES ((SELECT MAX(SucursalId)+1 FROM Sucursales)
         ,Nombre,Direccion, NumeroTelefono, GerenteSucursal, HorarioOperacion, 1);
+        p_salida:='1';  
         COMMIT;
         
        EXCEPTION
        WHEN OTHERS THEN
-        p_salida:='No se pudo ingresar la nueva sucursal';
+        p_salida:='0';
        ROLLBACK;
     END agregar_sucursal;
     
@@ -71,6 +73,7 @@ VARIABLE p_salida VARCHAR2;
 BEGIN
   
   pkgMain.agregar_pan('Alemán', '3.5', 'Descripción del pan alemán', '2', :p_salida);
+
 END;
 /
 

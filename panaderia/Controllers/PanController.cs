@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Panaderia.Services;
+using PanaderiaModels.Entities;
 
 namespace Panaderia.Controllers
 {
@@ -14,13 +15,27 @@ namespace Panaderia.Controllers
             _panService = panService;
         }
 
-        //Get: api/Pan
         [HttpGet]
         public IActionResult ObtenerPanes()
         {
             try
             {
                 var panes = _panService.ObtenerPanes();
+                return Ok(panes);
+            }
+            catch (Exception exp)
+            {
+                return Ok(exp.Message);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CrearPan(Pan model)
+        {
+            try
+            {
+                var panes = _panService.CrearPan(model);
                 return Ok(panes);
             }
             catch (Exception exp)
