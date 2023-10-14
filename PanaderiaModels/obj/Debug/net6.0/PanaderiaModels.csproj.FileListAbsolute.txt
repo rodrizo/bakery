@@ -1,0 +1,12 @@
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\bin\Debug\net6.0\PanaderiaModels.deps.json
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\bin\Debug\net6.0\PanaderiaModels.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\bin\Debug\net6.0\PanaderiaModels.pdb
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.csproj.AssemblyReference.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.AssemblyInfoInputs.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.AssemblyInfo.cs
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.csproj.CoreCompileInputs.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\refint\PanaderiaModels.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\PanaderiaModels.pdb
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\PanaderiaModels\obj\Debug\net6.0\ref\PanaderiaModels.dll

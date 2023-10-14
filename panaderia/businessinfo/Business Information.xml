@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="2029EEDC-39BA-521F-F914-5ABDA417051B">
-<createdBy>Rodney Rizo</createdBy>
-<createdTime>2023-09-19 03:36:29 UTC</createdTime>
-<ownerDesignName>panaderia</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</BusinessInfoDesign>

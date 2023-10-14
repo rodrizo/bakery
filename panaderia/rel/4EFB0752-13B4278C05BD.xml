@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="panaderia" id="4EFB0752-C79E-8D26-329A-13B4278C05BD" mainViewID="6F668C18-437C-2804-1EFC-08D30CF0D597">
-<createdBy>Rodney Rizo</createdBy>
-<createdTime>2023-09-19 03:36:29 UTC</createdTime>
-<ownerDesignName>panaderia</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-<selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
-</relationalModel>
