@@ -1,8 +1,8 @@
 
 CREATE OR REPLACE PACKAGE pkgMain AS 
 
-    PROCEDURE agregar_pan (Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
-    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, p_salida OUT VARCHAR2);
+    PROCEDURE agregar_pan (PanId in NUMBER, Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
+    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, IsActive in CHAR, p_salida OUT VARCHAR2);
     
     
     PROCEDURE agregar_ingrediente (Nombre in VARCHAR2, Proveedor in VARCHAR2, 
@@ -16,22 +16,42 @@ END pkgMain;
 
 CREATE OR REPLACE PACKAGE BODY pkgMain AS
 
-    PROCEDURE agregar_pan        (Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
-    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, p_salida OUT VARCHAR2
+    PROCEDURE agregar_pan        (PanId in NUMBER, Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
+    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, IsActive in CHAR, p_salida OUT VARCHAR2
     ) IS
     BEGIN
-       INSERT INTO Panes VALUES ((SELECT MAX(PanId)+1 FROM Panes),Nombre,PrecioUnitario, Descripcion, TiempoPreparacion, 1);
-       COMMIT;
-       
-       --Creando receta inmediatamente para luego solo añadir detalles
-       INSERT INTO Recetas VALUES ((SELECT MAX(RecetaId)+1 FROM Recetas),NULL, 1, (SELECT MAX(PanId) FROM Panes));
-        p_salida:='1';  
-       COMMIT;
-       
-       EXCEPTION
-       WHEN OTHERS THEN
-        p_salida:='0';
-       ROLLBACK;
+        --Si PanId no es nulo, hay dos opciones -> Update o Delete
+        IF (PanId IS NOT NULL) THEN
+            --Si IsActive = NULL + PanId <> NULL -> Update sencillo
+            IF (IsActive IS NULL) THEN
+                UPDATE Panes
+                SET Nombre = Nombre, PrecioUnitario = PrecioUnitario, Descripcion = Descripcion,
+                TiempoPreparacion = TiempoPreparacion
+                WHERE PanId = PanId;
+                    p_salida:='2'; -- Código para determinar updates
+                COMMIT;
+                --Si IsActive <> NULL -> Delete
+            ELSIF (IsActive IS NOT NULL) THEN
+                UPDATE Panes
+                SET IsActive = '0'
+                WHERE PanId = PanId;
+                    p_salida:='3'; --Código para determinar deletes
+                COMMIT;
+            END IF;
+        ELSIF (PanId IS NULL) THEN
+            INSERT INTO Panes VALUES ((SELECT MAX(PanId)+1 FROM Panes),Nombre,PrecioUnitario, Descripcion, TiempoPreparacion, 1);
+            COMMIT;
+           
+            --Creando receta inmediatamente para luego solo añadir detalles
+            INSERT INTO Recetas VALUES ((SELECT MAX(RecetaId)+1 FROM Recetas),NULL, 1, (SELECT MAX(PanId) FROM Panes));
+                p_salida:='1';  --Código para determinar inserts
+            COMMIT;
+        END IF;
+        
+        EXCEPTION
+        WHEN OTHERS THEN
+            p_salida:='0'; --Código para determinar errores
+        ROLLBACK;
     END agregar_pan;
     
     

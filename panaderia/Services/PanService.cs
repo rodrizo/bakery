@@ -99,7 +99,20 @@ namespace Panaderia.Services
 
                         salida = cmd.Parameters["p_salida"].Value.ToString();
 
-                        return (salida.Equals("1")) ? "El pan fue creado con éxito." : "No se pudo crear el pan.";
+                        if (salida.Equals("1"))
+                        {
+                            return "El pan fue creado con éxito.";
+                        } else if (salida.Equals("2"))
+                        {
+                            return "El pan fue editado con éxito.";
+                        } else if(salida.Equals("3"))
+                        {
+                            return "El pan fue eliminado con éxito.";
+                        }
+                        else
+                        {
+                            return "Error";
+                        }
                     }
                     catch (Exception ex)
                     {
