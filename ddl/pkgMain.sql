@@ -1,45 +1,44 @@
 
 CREATE OR REPLACE PACKAGE pkgMain AS 
 
-    PROCEDURE agregar_pan (PanId in NUMBER, Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
-    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, IsActive in CHAR, p_salida OUT VARCHAR2);
+    PROCEDURE crud_pan (p_PanId in NUMBER, p_Nombre in VARCHAR2, p_PrecioUnitario in VARCHAR2, 
+    p_Descripcion in VARCHAR2, p_TiempoPreparacion in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
+    PROCEDURE agregar_ingrediente (p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
+    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_salida OUT VARCHAR2);
     
-    PROCEDURE agregar_ingrediente (Nombre in VARCHAR2, Proveedor in VARCHAR2, 
-    CostoUnitario in NUMBER, FechaCompra in DATE, p_salida OUT VARCHAR2);
-    
-    PROCEDURE agregar_sucursal (Nombre in VARCHAR2, Direccion in VARCHAR2, 
-    NumeroTelefono in VARCHAR2, GerenteSucursal in VARCHAR2, HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2);
+    PROCEDURE agregar_sucursal (p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
+    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2);
     
 END pkgMain;
 
 
 CREATE OR REPLACE PACKAGE BODY pkgMain AS
 
-    PROCEDURE agregar_pan        (PanId in NUMBER, Nombre in VARCHAR2, PrecioUnitario in VARCHAR2, 
-    Descripcion in VARCHAR2, TiempoPreparacion in VARCHAR2, IsActive in CHAR, p_salida OUT VARCHAR2
+    PROCEDURE crud_pan        (p_PanId in NUMBER, p_Nombre in VARCHAR2, p_PrecioUnitario in VARCHAR2, 
+    p_Descripcion in VARCHAR2, p_TiempoPreparacion in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2
     ) IS
     BEGIN
         --Si PanId no es nulo, hay dos opciones -> Update o Delete
-        IF (PanId IS NOT NULL) THEN
+        IF (p_PanId IS NOT NULL) THEN
             --Si IsActive = NULL + PanId <> NULL -> Update sencillo
-            IF (IsActive IS NULL) THEN
-                UPDATE Panes
-                SET Nombre = Nombre, PrecioUnitario = PrecioUnitario, Descripcion = Descripcion,
-                TiempoPreparacion = TiempoPreparacion
-                WHERE PanId = PanId;
-                    p_salida:='2'; -- Código para determinar updates
+            IF (p_IsActive IS NULL) THEN
+                UPDATE Panes p
+                SET p.Nombre = p_Nombre, p.PrecioUnitario = p_PrecioUnitario, p.Descripcion = p_Descripcion,
+                p.TiempoPreparacion = p_TiempoPreparacion
+                WHERE p.PanId = p_PanId;
                 COMMIT;
+                p_salida:='2'; -- Código para determinar updates
                 --Si IsActive <> NULL -> Delete
-            ELSIF (IsActive IS NOT NULL) THEN
+            ELSIF (p_IsActive IS NOT NULL) THEN
                 UPDATE Panes
                 SET IsActive = '0'
-                WHERE PanId = PanId;
+                WHERE PanId = p_PanId;
                     p_salida:='3'; --Código para determinar deletes
                 COMMIT;
             END IF;
-        ELSIF (PanId IS NULL) THEN
-            INSERT INTO Panes VALUES ((SELECT MAX(PanId)+1 FROM Panes),Nombre,PrecioUnitario, Descripcion, TiempoPreparacion, 1);
+        ELSIF (p_PanId IS NULL) THEN
+            INSERT INTO Panes VALUES ((SELECT MAX(PanId)+1 FROM Panes),p_Nombre,p_PrecioUnitario, p_Descripcion, p_TiempoPreparacion, 1);
             COMMIT;
            
             --Creando receta inmediatamente para luego solo añadir detalles
@@ -47,20 +46,19 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
                 p_salida:='1';  --Código para determinar inserts
             COMMIT;
         END IF;
-        
         EXCEPTION
         WHEN OTHERS THEN
             p_salida:='0'; --Código para determinar errores
         ROLLBACK;
-    END agregar_pan;
+    END crud_pan;
     
     
-    PROCEDURE agregar_ingrediente (Nombre in VARCHAR2, Proveedor in VARCHAR2, 
-    CostoUnitario in NUMBER, FechaCompra in DATE, p_salida OUT VARCHAR2)
+    PROCEDURE agregar_ingrediente (p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
+    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_salida OUT VARCHAR2)
     IS
     BEGIN
         INSERT INTO Ingredientes VALUES ((SELECT MAX(IngredienteId)+1 FROM Ingredientes)
-        ,Nombre,Proveedor, CostoUnitario, FechaCompra, 1);
+        ,p_Nombre,p_Proveedor, p_CostoUnitario, p_FechaCompra, 1);
         p_salida:='1';  
         COMMIT;
         
@@ -70,12 +68,12 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
        ROLLBACK;
     END agregar_ingrediente;
     
-    PROCEDURE agregar_sucursal (Nombre in VARCHAR2, Direccion in VARCHAR2, 
-    NumeroTelefono in VARCHAR2, GerenteSucursal in VARCHAR2, HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2)
+    PROCEDURE agregar_sucursal (p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
+    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2)
     IS
     BEGIN
         INSERT INTO Sucursales VALUES ((SELECT MAX(SucursalId)+1 FROM Sucursales)
-        ,Nombre,Direccion, NumeroTelefono, GerenteSucursal, HorarioOperacion, 1);
+        ,p_Nombre,p_Direccion, p_NumeroTelefono, p_GerenteSucursal, p_HorarioOperacion, 1);
         p_salida:='1';  
         COMMIT;
         
@@ -88,12 +86,13 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
 END pkgMain;
 
 /*
+SET SERVEROUTPUT ON;
 VARIABLE p_salida VARCHAR2;
 
 BEGIN
   
-  pkgMain.agregar_pan('Alemán', '3.5', 'Descripción del pan alemán', '2', :p_salida);
-
+  pkgMain.crud_pan(13, 'Pudín', '7', 'Pudin ok', '2', NULL,:p_salida);
+ 
 END;
 /
 

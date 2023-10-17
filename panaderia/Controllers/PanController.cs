@@ -43,5 +43,20 @@ namespace Panaderia.Controllers
                 return Ok(exp.Message);
             }
         }
+
+
+        [HttpPut]
+        public async Task<IActionResult> EditarPan(int id, Pan model)
+        {
+            try
+            {
+                var panes = _panService.EditarPan(id, model);
+                return Ok(panes);
+            }
+            catch (Exception exp)
+            {
+                return Ok(exp.Message);
+            }
+        }
     }
 }

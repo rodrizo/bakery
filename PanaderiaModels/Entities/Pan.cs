@@ -8,7 +8,7 @@ namespace PanaderiaModels.Entities
 {
     public class Pan
     {
-        public int Id { get; set; }
+        public int PanId { get; set; }
         public string? Nombre { get; set; }
         public string? PrecioUnitario { get; set; }
         public string? Descripcion { get; set; }
