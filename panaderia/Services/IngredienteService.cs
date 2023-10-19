@@ -5,27 +5,27 @@ using System.Data;
 
 namespace Panaderia.Services
 {
-    public interface IPanService
+    public interface IIngredienteService
     {
-        List<Pan> ObtenerPanes();
-        string CrearPan(Pan model);
-        string EditarPan(int id, Pan model);
+        List<Ingrediente> ObtenerIngredientes();
+        string CrearIngrediente(Ingrediente model);
+        string EditarIngrediente(int id, Ingrediente model);
     }
 
-    public class PanService : IPanService
+    public class IngredienteService : IIngredienteService
     {
         private IPanaderiaDbContext _dbContext;
 
-        public PanService(IPanaderiaDbContext dbContext)
+        public IngredienteService(IIngredienteService dbContext)
         {
             _dbContext = dbContext;
         }
 
-        #region ObtenerPanes
-        //Método para obtener listado de panes
-        public List<Pan> ObtenerPanes()
+        #region Obtener Ingredientes
+        //Método para obtener listado de ingredientes
+        public List<Ingrediente> ObtenerIngredientes()
         {
-            List<Pan> panes = new List<Pan>();
+            List<Ingrediente> ingredientes = new List<Ingrediente>();
 
             using (OracleConnection con = _dbContext.GetConn())
             {
@@ -36,25 +36,25 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT PanId, Nombre, PrecioUnitario, Descripcion, TiempoPreparacion, IsActive FROM Panes";
+                        cmd.CommandText = "SELECT IngredienteId, Nombre, Proveedor, CostoUnitario, FechaCompra FROM Ingredientes WHERE IsActive = '1'";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            panes.Add(new Pan()
+                            ingredientes.Add(new Ingrediente()
                             {
-                                PanId = Convert.ToInt32(reader["PanId"]),
+                                IngredienteId = Convert.ToInt32(reader["IngredienteId"]),
                                 Nombre = reader["Nombre"].ToString(),
-                                PrecioUnitario = reader["PrecioUnitario"].ToString(),
-                                Descripcion = reader["Descripcion"].ToString(),
-                                TiempoPreparacion = reader["TiempoPreparacion"].ToString(),
+                               Proveedor = reader["Proveedor"].ToString(),
+                                CostoUnitario = Convert.ToDouble(reader["CostoUnitario"].ToString()),
+                                FechaCompra = Convert.ToDateTime(reader["FechaCompra"].ToString()),
                                 IsActive = reader["IsActive"].ToString()
                             });
                         }
                         reader.Dispose();
-                        return panes;
+                        return ingredientes;
                     }
                     catch (Exception ex)
                     {
@@ -69,9 +69,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region AgregarPan
-        //Método para agregar un pan
-        public string CrearPan(Pan model)
+        #region Agregar Ingrediente
+        //Método para agregar un Ingrediente
+        public string CrearIngrediente(Ingrediente model)
         {
             string salida;
 
@@ -84,17 +84,17 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMain.crud_pan";
+                        cmd.CommandText = "pkgMain.crud_ingrediente";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_PanId", OracleDbType.Varchar2).Value = null;
+                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Varchar2).Value = null;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
-                        cmd.Parameters.Add("p_PrecioUnitario", OracleDbType.Varchar2).Value = model.PrecioUnitario;
-                        cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;
-                        cmd.Parameters.Add("p_TiempoPreparacion", OracleDbType.Varchar2).Value = model.TiempoPreparacion;
+                        cmd.Parameters.Add("p_Proveedor", OracleDbType.Varchar2).Value = model.Proveedor;
+                        cmd.Parameters.Add("p_CostoUnitario", OracleDbType.Double).Value = model.CostoUnitario;
+                        cmd.Parameters.Add("p_FechaCompra", OracleDbType.Date).Value = model.FechaCompra;
                         cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = null;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
 
@@ -104,13 +104,13 @@ namespace Panaderia.Services
 
                         if (salida.Equals("1"))
                         {
-                            return "El pan fue creado con éxito.";
+                            return "El ingrediente fue creado con éxito.";
                         } else if (salida.Equals("2"))
                         {
-                            return "El pan fue editado con éxito.";
+                            return "El ingrediente fue editado con éxito.";
                         } else if(salida.Equals("3"))
                         {
-                            return "El pan fue eliminado con éxito.";
+                            return "El ingrediente fue eliminado con éxito.";
                         }
                         else
                         {
@@ -130,9 +130,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region Editarpan
-        //Método para editar un pan
-        public string EditarPan(int id, Pan model)
+        #region Editar Ingrediente
+        //Método para editar un ingrediente
+        public string EditarIngrediente(int id, Ingrediente model)
         {
             string salida;
 
@@ -145,17 +145,17 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMain.crud_pan";
+                        cmd.CommandText = "pkgMain.crud_ingrediente";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_PanId", OracleDbType.Varchar2).Value = model.PanId;
+                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Varchar2).Value = model.IngredienteId;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
-                        cmd.Parameters.Add("p_PrecioUnitario", OracleDbType.Varchar2).Value = model.PrecioUnitario;
-                        cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;
-                        cmd.Parameters.Add("p_TiempoPreparacion", OracleDbType.Varchar2).Value = model.TiempoPreparacion;
+                        cmd.Parameters.Add("p_Proveedor", OracleDbType.Varchar2).Value = model.Proveedor;
+                        cmd.Parameters.Add("p_CostoUnitario", OracleDbType.Double).Value = model.CostoUnitario;
+                        cmd.Parameters.Add("p_FechaCompra", OracleDbType.Date).Value = model.FechaCompra;
                         cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = model.IsActive;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
 
@@ -165,15 +165,15 @@ namespace Panaderia.Services
 
                         if (salida.Equals("1"))
                         {
-                            return "El pan fue creado con éxito.";
+                            return "El ingrediente fue creado con éxito.";
                         }
                         else if (salida.Equals("2"))
                         {
-                            return "El pan fue editado con éxito.";
+                            return "El ingrediente fue editado con éxito.";
                         }
                         else if (salida.Equals("3"))
                         {
-                            return "El pan fue eliminado con éxito.";
+                            return "El ingrediente fue eliminado con éxito.";
                         }
                         else
                         {

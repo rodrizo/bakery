@@ -4,11 +4,11 @@ CREATE OR REPLACE PACKAGE pkgMain AS
     PROCEDURE crud_pan (p_PanId in NUMBER, p_Nombre in VARCHAR2, p_PrecioUnitario in VARCHAR2, 
     p_Descripcion in VARCHAR2, p_TiempoPreparacion in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
-    PROCEDURE agregar_ingrediente (p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
-    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_salida OUT VARCHAR2);
+    PROCEDURE crud_ingrediente (p_IngredienteId in NUMBER, p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
+    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
-    PROCEDURE agregar_sucursal (p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
-    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2);
+    PROCEDURE crud_sucursal (p_SucursalId in NUMBER, p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
+    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
 END pkgMain;
 
@@ -53,35 +53,77 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
     END crud_pan;
     
     
-    PROCEDURE agregar_ingrediente (p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
-    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_salida OUT VARCHAR2)
+    PROCEDURE crud_ingrediente (p_IngredienteId in NUMBER, p_Nombre in VARCHAR2, p_Proveedor in VARCHAR2, 
+    p_CostoUnitario in NUMBER, p_FechaCompra in DATE, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     BEGIN
-        INSERT INTO Ingredientes VALUES ((SELECT MAX(IngredienteId)+1 FROM Ingredientes)
-        ,p_Nombre,p_Proveedor, p_CostoUnitario, p_FechaCompra, 1);
-        p_salida:='1';  
-        COMMIT;
-        
-       EXCEPTION
-       WHEN OTHERS THEN
-        p_salida:='0';
-       ROLLBACK;
-    END agregar_ingrediente;
+        --Si IngredienteId no es nulo, hay dos opciones -> Update o Delete
+        IF (p_IngredienteId IS NOT NULL) THEN
+            --Si IsActive = NULL + IngredienteId <> NULL -> Update sencillo
+            IF (p_IsActive IS NULL) THEN
+                UPDATE Ingredientes i
+                    SET i.Nombre = p_Nombre, i.Proveedor = p_Proveedor, i.CostoUnitario = p_CostoUnitario,
+                    i.FechaCompra = p_FechaCompra
+                    WHERE i.IngredienteId = p_IngredienteId;
+                    COMMIT;
+                    p_salida:='2'; -- Código para determinar updates
+                    --Si IsActive <> NULL -> Delete
+                    ELSIF (p_IsActive IS NOT NULL) THEN
+                UPDATE Ingredientes
+                SET IsActive = '0'
+                WHERE IngredienteId = p_IngredienteId;
+                    p_salida:='3'; --Código para determinar deletes
+                COMMIT;
+            END IF;
+        ELSIF (p_IngredienteId IS NULL) THEN
+            INSERT INTO Ingredientes VALUES ((SELECT MAX(IngredienteId)+1 FROM Ingredientes)
+            ,p_Nombre,p_Proveedor, p_CostoUnitario, p_FechaCompra, 1);
+            p_salida:='1';  
+            COMMIT;
+        END IF;
+        EXCEPTION
+        WHEN OTHERS THEN
+            p_salida:='0'; --Código para determinar errores
+        ROLLBACK;
+    END crud_ingrediente;
     
-    PROCEDURE agregar_sucursal (p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
-    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_salida OUT VARCHAR2)
+    PROCEDURE crud_sucursal (p_SucursalId in NUMBER, p_Nombre in VARCHAR2, p_Direccion in VARCHAR2, 
+    p_NumeroTelefono in VARCHAR2, p_GerenteSucursal in VARCHAR2, p_HorarioOperacion in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     BEGIN
-        INSERT INTO Sucursales VALUES ((SELECT MAX(SucursalId)+1 FROM Sucursales)
-        ,p_Nombre,p_Direccion, p_NumeroTelefono, p_GerenteSucursal, p_HorarioOperacion, 1);
-        p_salida:='1';  
-        COMMIT;
+        --Si SucursalId no es nulo, hay dos opciones -> Update o Delete
+        IF (p_SucursalId IS NOT NULL) THEN
+            --Si IsActive = NULL + SucursalId <> NULL -> Update sencillo
+            IF (p_IsActive IS NULL) THEN
+                UPDATE Sucursales s
+                    SET s.Nombre = p_Nombre, s.Direccion = p_Direccion, s.NumeroTelefono = p_NumeroTelefono,
+                    s.GerenteSucursal = p_GerenteSucursal, s.HorarioOperacion = p_HorarioOperacion
+                    WHERE s.SucursalId = p_SucursalId;
+                    COMMIT;
+                    p_salida:='2'; -- Código para determinar updates
+                    --Si IsActive <> NULL -> Delete
+                    ELSIF (p_IsActive IS NOT NULL) THEN
+                UPDATE Sucursales
+                SET IsActive = '0'
+                WHERE SucursalId = p_SucursalId;
+                    p_salida:='3'; --Código para determinar deletes
+                COMMIT;
+            END IF;
+        ELSIF (p_SucursalId IS NULL) THEN
+            INSERT INTO Sucursales VALUES ((SELECT MAX(SucursalId)+1 FROM Sucursales)
+            ,p_Nombre,p_Direccion, p_NumeroTelefono, p_GerenteSucursal, p_HorarioOperacion, 1);
+            p_salida:='1';  
+            COMMIT;
+        END IF;
+        EXCEPTION
+        WHEN OTHERS THEN
+            p_salida:='0'; --Código para determinar errores
+        ROLLBACK;
+        /*
         
-       EXCEPTION
-       WHEN OTHERS THEN
-        p_salida:='0';
-       ROLLBACK;
-    END agregar_sucursal;
+        */  
+       
+    END crud_sucursal;
     
 END pkgMain;
 
@@ -101,7 +143,7 @@ VARIABLE p_salida VARCHAR2;
 
 BEGIN
   
-  pkgMain.agregar_ingrediente('Agua', 'Agua Salvavidas', 16, SYSDATE, :p_salida);
+  pkgMain.crud_ingrediente(11, 'Agua', 'Agua Salvavidas 2 TEST', 16, SYSDATE, 1, :p_salida);
 END;
 /
 
@@ -110,7 +152,9 @@ VARIABLE p_salida VARCHAR2;
 
 BEGIN
   
-  pkgMain.agregar_sucursal('Nueva Terminal', 'Main St 888', '505 123123123', 'Fidelina Perez', '8am - 7pm', :p_salida);
+  pkgMain.crud_sucursal(7, 'Nueva Terminal TEST', 'Main St 888', '505 12345678', 'Fidelina Perez', '8am - 7pm', 0, :p_salida);
 END;
 /
+
+
 */
