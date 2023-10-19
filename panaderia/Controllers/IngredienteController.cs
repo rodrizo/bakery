@@ -8,9 +8,9 @@ namespace Panaderia.Controllers
     [Route("api/ingrediente")]
     public class IngredienteController : ControllerBase
     {
-        IIngredienteService _ingredienteService;
+        IServiceIngrediente _ingredienteService;
 
-        public IngredienteController(IIngredienteService ingredienteService)
+        public IngredienteController(IServiceIngrediente ingredienteService)
         {
             _ingredienteService = ingredienteService;
         }
@@ -31,12 +31,12 @@ namespace Panaderia.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CrearPan(Pan model)
+        public async Task<IActionResult> CrearIngrediente(Ingrediente model)
         {
             try
             {
-                var panes = _panService.CrearPan(model);
-                return Ok(panes);
+                var ingredientes = _ingredienteService.CrearIngrediente(model);
+                return Ok(ingredientes);
             }
             catch (Exception exp)
             {
@@ -46,12 +46,12 @@ namespace Panaderia.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> EditarPan(int id, Pan model)
+        public async Task<IActionResult> EditarIngrediente(int id, Ingrediente model)
         {
             try
             {
-                var panes = _panService.EditarPan(id, model);
-                return Ok(panes);
+                var ingredientes = _ingredienteService.EditarIngrediente(id, model);
+                return Ok(ingredientes);
             }
             catch (Exception exp)
             {

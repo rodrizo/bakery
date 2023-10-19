@@ -5,27 +5,27 @@ using System.Data;
 
 namespace Panaderia.Services
 {
-    public interface IServiceIngrediente
+    public interface ISucursalService
     {
-        List<Ingrediente> ObtenerIngredientes();
-        string CrearIngrediente(Ingrediente model);
-        string EditarIngrediente(int id, Ingrediente model);
+        List<Sucursal> ObtenerSucursales();
+        string CrearSucursal(Sucursal model);
+        string EditarSucursal(int id, Sucursal model);
     }
 
-    public class IngredienteService : IServiceIngrediente
+    public class SucursalService : ISucursalService
     {
         private IPanaderiaDbContext _dbContext;
 
-        public IngredienteService(IPanaderiaDbContext dbContext)
+        public SucursalService(IPanaderiaDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        #region Obtener Ingredientes
-        //Método para obtener listado de ingredientes
-        public List<Ingrediente> ObtenerIngredientes()
+        #region Obtener Sucursales
+        //Método para obtener listado de sucursales
+        public List<Sucursal> ObtenerSucursales()
         {
-            List<Ingrediente> ingredientes = new List<Ingrediente>();
+            List<Sucursal> sucursales = new List<Sucursal>();
 
             using (OracleConnection con = _dbContext.GetConn())
             {
@@ -36,25 +36,26 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT IngredienteId, Nombre, Proveedor, CostoUnitario, FechaCompra, IsActive FROM Ingredientes WHERE IsActive = '1'";
+                        cmd.CommandText = "SELECT SucursalId, Nombre, Direccion, NumeroTelefono, GerenteSucursal, HorarioOperacion, IsActive FROM Sucursales WHERE IsActive = 1";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            ingredientes.Add(new Ingrediente()
+                            sucursales.Add(new Sucursal()
                             {
-                                IngredienteId = Convert.ToInt32(reader["IngredienteId"]),
+                                SucursalId = Convert.ToInt32(reader["SucursalId"]),
                                 Nombre = reader["Nombre"].ToString(),
-                               Proveedor = reader["Proveedor"].ToString(),
-                                CostoUnitario = Convert.ToDouble(reader["CostoUnitario"].ToString()),
-                                FechaCompra = Convert.ToDateTime(reader["FechaCompra"].ToString()),
+                                Direccion = reader["Direccion"].ToString(),
+                                NumeroTelefono = reader["NumeroTelefono"].ToString(),
+                                GerenteSucursal = reader["GerenteSucursal"].ToString(),
+                                HorarioOperacion = reader["HorarioOperacion"].ToString(),
                                 IsActive = reader["IsActive"].ToString()
                             });
                         }
                         reader.Dispose();
-                        return ingredientes;
+                        return sucursales;
                     }
                     catch (Exception ex)
                     {
@@ -69,9 +70,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region Agregar Ingrediente
-        //Método para agregar un Ingrediente
-        public string CrearIngrediente(Ingrediente model)
+        #region Agregar Sucursal
+        //Método para agregar una sucursal
+        public string CrearSucursal(Sucursal model)
         {
             string salida;
 
@@ -84,17 +85,18 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMain.crud_ingrediente";
+                        cmd.CommandText = "pkgMain.crud_sucursal";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Int32).Value = null;
+                        cmd.Parameters.Add("p_SucursalId", OracleDbType.Varchar2).Value = null;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
-                        cmd.Parameters.Add("p_Proveedor", OracleDbType.Varchar2).Value = model.Proveedor;
-                        cmd.Parameters.Add("p_CostoUnitario", OracleDbType.Double).Value = model.CostoUnitario;
-                        cmd.Parameters.Add("p_FechaCompra", OracleDbType.Date).Value = model.FechaCompra;
+                        cmd.Parameters.Add("p_Direccion", OracleDbType.Varchar2).Value = model.Direccion;
+                        cmd.Parameters.Add("p_NumeroTelefono", OracleDbType.Varchar2).Value = model.NumeroTelefono;
+                        cmd.Parameters.Add("p_GerenteSucursal", OracleDbType.Varchar2).Value = model.GerenteSucursal;
+                        cmd.Parameters.Add("p_HorarioOperacion", OracleDbType.Varchar2).Value = model.HorarioOperacion;
                         cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = null;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
 
@@ -104,13 +106,13 @@ namespace Panaderia.Services
 
                         if (salida.Equals("1"))
                         {
-                            return "El ingrediente fue creado con éxito.";
+                            return "La sucursal fue creado con éxito.";
                         } else if (salida.Equals("2"))
                         {
-                            return "El ingrediente fue editado con éxito.";
+                            return "La sucursal fue editado con éxito.";
                         } else if(salida.Equals("3"))
                         {
-                            return "El ingrediente fue eliminado con éxito.";
+                            return "La sucursal fue eliminado con éxito.";
                         }
                         else
                         {
@@ -130,9 +132,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region Editar Ingrediente
-        //Método para editar un ingrediente
-        public string EditarIngrediente(int id, Ingrediente model)
+        #region Editar Sucursal
+        //Método para editar una sucursal
+        public string EditarSucursal(int id, Sucursal model)
         {
             string salida;
 
@@ -145,35 +147,35 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMain.crud_ingrediente";
+                        cmd.CommandText = "pkgMain.crud_sucursal";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Int32).Value = model.IngredienteId;
+                        cmd.Parameters.Add("p_SucursalId", OracleDbType.Varchar2).Value = model.SucursalId;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
-                        cmd.Parameters.Add("p_Proveedor", OracleDbType.Varchar2).Value = model.Proveedor;
-                        cmd.Parameters.Add("p_CostoUnitario", OracleDbType.Double).Value = model.CostoUnitario;
-                        cmd.Parameters.Add("p_FechaCompra", OracleDbType.Date).Value = model.FechaCompra;
+                        cmd.Parameters.Add("p_Direccion", OracleDbType.Varchar2).Value = model.Direccion;
+                        cmd.Parameters.Add("p_NumeroTelefono", OracleDbType.Varchar2).Value = model.NumeroTelefono;
+                        cmd.Parameters.Add("p_GerenteSucursal", OracleDbType.Varchar2).Value = model.GerenteSucursal;
+                        cmd.Parameters.Add("p_HorarioOperacion", OracleDbType.Varchar2).Value = model.HorarioOperacion;
                         cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = model.IsActive;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
-
                         cmd.ExecuteNonQuery();
 
                         salida = cmd.Parameters["p_salida"].Value.ToString();
 
                         if (salida.Equals("1"))
                         {
-                            return "El ingrediente fue creado con éxito.";
+                            return "La sucursal fue creado con éxito.";
                         }
                         else if (salida.Equals("2"))
                         {
-                            return "El ingrediente fue editado con éxito.";
+                            return "La sucursal fue editado con éxito.";
                         }
                         else if (salida.Equals("3"))
                         {
-                            return "El ingrediente fue eliminado con éxito.";
+                            return "La sucursal fue eliminado con éxito.";
                         }
                         else
                         {

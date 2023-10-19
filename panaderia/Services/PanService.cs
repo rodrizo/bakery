@@ -36,7 +36,7 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT PanId, Nombre, PrecioUnitario, Descripcion, TiempoPreparacion, IsActive FROM Panes";
+                        cmd.CommandText = "SELECT PanId, Nombre, PrecioUnitario, Descripcion, TiempoPreparacion, IsActive FROM Panes WHERE IsActive = '1'";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
@@ -90,7 +90,7 @@ namespace Panaderia.Services
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_PanId", OracleDbType.Varchar2).Value = null;
+                        cmd.Parameters.Add("p_PanId", OracleDbType.Int32).Value = null;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
                         cmd.Parameters.Add("p_PrecioUnitario", OracleDbType.Varchar2).Value = model.PrecioUnitario;
                         cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;
@@ -151,7 +151,7 @@ namespace Panaderia.Services
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_PanId", OracleDbType.Varchar2).Value = model.PanId;
+                        cmd.Parameters.Add("p_PanId", OracleDbType.Int32).Value = model.PanId;
                         cmd.Parameters.Add("p_Nombre", OracleDbType.Varchar2).Value = model.Nombre;
                         cmd.Parameters.Add("p_PrecioUnitario", OracleDbType.Varchar2).Value = model.PrecioUnitario;
                         cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;

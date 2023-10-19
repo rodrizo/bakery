@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IPanaderiaDbContext, PanaderiaDbContext>();
 builder.Services.AddScoped<IPanService, PanService>();
+builder.Services.AddScoped<IServiceIngrediente, IngredienteService>();
+builder.Services.AddScoped<ISucursalService, SucursalService>();
 
 // Add services to the container.
 builder.Services.AddControllers();
