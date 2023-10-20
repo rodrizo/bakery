@@ -8,6 +8,7 @@ CREATE OR REPLACE PACKAGE pkgMainFlows AS
     
     PROCEDURE agregar_pedido_item (p_Id in NUMBER, p_PanId in NUMBER, p_PedidoId in NUMBER, p_Cantidad in NUMBER, 
     p_Comentarios in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
+    
 END pkgMainFlows;
 
 
@@ -24,7 +25,7 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
             --Si IsActive = NULL + PanId <> NULL -> Update sencillo
             IF (p_IsActive IS NULL) THEN
                 UPDATE RecetaIngrediente rg
-                SET rg.p_IngredienteId = p_IngredienteId, rg.Descripcion = p_Descripcion, rg.Cantidad = p_Cantidad
+                SET rg.IngredienteId = p_IngredienteId, rg.Descripcion = p_Descripcion, rg.Cantidad = p_Cantidad
                 WHERE rg.Id = p_Id;
                 COMMIT;
                 p_salida:='2'; -- Código para determinar updates
@@ -47,7 +48,6 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
         ROLLBACK;
     END agregar_item_receta;
     
-    
     PROCEDURE agregar_pedido (p_PedidoId in NUMBER, p_FechaPedido in DATE, p_Ruta in VARCHAR2, p_Estado in VARCHAR2, 
     p_Comentarios in VARCHAR2, p_SucursalId in NUMBER, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
@@ -57,9 +57,9 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
             --Si IsActive = NULL + PanId <> NULL -> Update sencillo
             IF (p_IsActive IS NULL) THEN
                 UPDATE Pedidos p
-                SET rg.PedidoId = p_PedidoId, rg.FechaPedido = p_FechaPedido, rg.Ruta = p_Ruta, 
-                rg.Estado = p_Estado, rg.Cantidad = p_Cantidad, rg.Comentarios = p_Comentarios
-                WHERE rg.SucursalId = p_SucursalId;
+                SET p.PedidoId = p_PedidoId, p.FechaPedido = p_FechaPedido, p.Ruta = p_Ruta, 
+                p.Estado = p_Estado, p.Comentarios = p_Comentarios
+                WHERE p.SucursalId = p_SucursalId;
                 COMMIT;
                 p_salida:='2'; -- Código para determinar updates
                 --Si IsActive <> NULL -> Delete
@@ -70,7 +70,7 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                     p_salida:='3'; --Código para determinar deletes
                 COMMIT;
             END IF;
-        ELSIF (p_Id IS NULL) THEN
+        ELSIF (p_PedidoId IS NULL) THEN
             INSERT INTO Pedidos VALUES ((SELECT MAX(PedidoId)+1 FROM Pedidos),p_FechaPedido,
             p_Ruta,p_Estado, p_Comentarios, p_SucursalId, 1);
                 p_salida:='1';  --Código para determinar inserts
@@ -87,14 +87,36 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
     p_Comentarios in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     BEGIN
-        INSERT INTO PedidoPan VALUES (p_PanId, p_PedidoId, p_Cantidad, p_Comentarios, 1, (SELECT MAX(Id)+1 FROM PedidoPan));
-        COMMIT;
-        
+        --Si p_PedidoId no es nulo, hay dos opciones -> Update o Delete
+        IF (p_Id IS NOT NULL) THEN
+            --Si IsActive = NULL + PanId <> NULL -> Update sencillo
+            IF (p_IsActive IS NULL) THEN
+                UPDATE PedidoPan pp
+                SET pp.PanId = p_PanId, pp.PedidoId = p_PedidoId, pp.Cantidad = p_Cantidad, 
+                pp.Comentarios = p_Comentarios
+                WHERE pp.Id = p_Id;
+                COMMIT;
+                p_salida:='2'; -- Código para determinar updates
+                --Si IsActive <> NULL -> Delete
+            ELSIF (p_IsActive IS NOT NULL) THEN
+                UPDATE PedidoPan pp
+                SET pp.IsActive = '0'
+                WHERE pp.PedidoId = p_PedidoId;
+                    p_salida:='3'; --Código para determinar deletes
+                COMMIT;
+            END IF;
+        ELSIF (p_Id IS NULL) THEN
+            INSERT INTO PedidoPan VALUES (p_PanId, p_PedidoId, p_Cantidad, p_Comentarios, 1, 
+            (SELECT MAX(Id)+1 FROM PedidoPan));
+                p_salida:='1';  --Código para determinar inserts
+            COMMIT;
+        END IF;
         EXCEPTION
         WHEN OTHERS THEN
-            p_salida:='No se pudo ingresar el nuevo detalle del pedido';
-        ROLLBACK;
+            p_salida:='0'; --Código para determinar errores
+        ROLLBACK;   
     END agregar_pedido_item;
+    
 END pkgMainFlows;
 
 /*
