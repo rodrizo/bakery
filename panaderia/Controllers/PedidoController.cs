@@ -5,20 +5,20 @@ using PanaderiaModels.Entities;
 namespace Panaderia.Controllers
 {
     [ApiController]
-    [Route("api/receta")]
-    public class RecetaController : ControllerBase
+    [Route("api/pedido")]
+    public class PedidoController : ControllerBase
     {
-        private readonly IRecetaService _recetaService;
+        private readonly IPedidoService _pedidoService;
 
-        public RecetaController(IRecetaService recetaService) => this._recetaService = recetaService;
+        public PedidoController(IPedidoService pedidoService) => this._pedidoService = pedidoService;
 
-        [HttpGet]
-        public IActionResult ObtenerRecetas()
+        [HttpGet("{id}")]
+        public IActionResult ObtenerPedidos([FromRoute] int id)
         {
             try
             {
-                var recetas = _recetaService.ObtenerRecetas();
-                return Ok(recetas);
+                var pedidos = _pedidoService.ObtenerPedidos(id);
+                return Ok(pedidos);
             }
             catch (Exception exp)
             {
@@ -26,6 +26,7 @@ namespace Panaderia.Controllers
             }
         }
 
+        /*
         [HttpGet("{id}")]
         public IActionResult ObtenerItemsRecetas([FromRoute] int id)
         {
@@ -69,5 +70,6 @@ namespace Panaderia.Controllers
                 return Ok(exp.Message);
             }
         }
+        */
     }
 }

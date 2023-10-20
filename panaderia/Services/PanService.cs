@@ -14,12 +14,9 @@ namespace Panaderia.Services
 
     public class PanService : IPanService
     {
-        private IPanaderiaDbContext _dbContext;
+        private readonly IPanaderiaDbContext _dbContext;
 
-        public PanService(IPanaderiaDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        public PanService(IPanaderiaDbContext dbContext) => this._dbContext = dbContext;
 
         #region ObtenerPanes
         //Método para obtener listado de panes

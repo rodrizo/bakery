@@ -8,12 +8,9 @@ namespace Panaderia.Controllers
     [Route("api/sucursal")]
     public class SucursalController : ControllerBase
     {
-        ISucursalService _sucursalService;
+        private readonly ISucursalService _sucursalService;
 
-        public SucursalController(ISucursalService sucursalService)
-        {
-            _sucursalService = sucursalService;
-        }
+        public SucursalController(ISucursalService sucursalService) => this._sucursalService = sucursalService;
 
         [HttpGet]
         public IActionResult ObtenerSucursales()

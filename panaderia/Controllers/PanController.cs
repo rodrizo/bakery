@@ -8,12 +8,9 @@ namespace Panaderia.Controllers
     [Route("api/pan")]
     public class PanController : ControllerBase
     {
-        IPanService _panService;
+        private readonly IPanService _panService;
 
-        public PanController(IPanService panService)
-        {
-            _panService = panService;
-        }
+        public PanController(IPanService panService) => this._panService = panService;
 
         [HttpGet]
         public IActionResult ObtenerPanes()

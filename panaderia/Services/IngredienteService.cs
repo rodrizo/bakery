@@ -14,12 +14,9 @@ namespace Panaderia.Services
 
     public class IngredienteService : IServiceIngrediente
     {
-        private IPanaderiaDbContext _dbContext;
+        private readonly IPanaderiaDbContext _dbContext;
 
-        public IngredienteService(IPanaderiaDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        public IngredienteService(IPanaderiaDbContext dbContext) => this._dbContext = dbContext;
 
         #region Obtener Ingredientes
         //Método para obtener listado de ingredientes

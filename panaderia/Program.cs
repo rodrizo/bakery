@@ -8,6 +8,7 @@ builder.Services.AddScoped<IPanService, PanService>();
 builder.Services.AddScoped<IServiceIngrediente, IngredienteService>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
 builder.Services.AddScoped<IRecetaService, RecetaService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 // Add services to the container.
 builder.Services.AddControllers();

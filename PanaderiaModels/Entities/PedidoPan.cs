@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PanaderiaModels.Entities
 {
-    public class PedidoItem
+    public class PedidoPan
     {
         public int Id { get; set; }
         public int PanId { get; set; }

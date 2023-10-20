@@ -14,12 +14,9 @@ namespace Panaderia.Services
 
     public class SucursalService : ISucursalService
     {
-        private IPanaderiaDbContext _dbContext;
+        private readonly IPanaderiaDbContext _dbContext;
 
-        public SucursalService(IPanaderiaDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        public SucursalService(IPanaderiaDbContext dbContext) => this._dbContext = dbContext;
 
         #region Obtener Sucursales
         //Método para obtener listado de sucursales

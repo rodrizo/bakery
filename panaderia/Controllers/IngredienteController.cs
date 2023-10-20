@@ -8,12 +8,9 @@ namespace Panaderia.Controllers
     [Route("api/ingrediente")]
     public class IngredienteController : ControllerBase
     {
-        IServiceIngrediente _ingredienteService;
+        private readonly IServiceIngrediente _ingredienteService;
 
-        public IngredienteController(IServiceIngrediente ingredienteService)
-        {
-            _ingredienteService = ingredienteService;
-        }
+        public IngredienteController(IServiceIngrediente ingredienteService) => this._ingredienteService = ingredienteService;
 
         [HttpGet]
         public IActionResult ObtenerIngredientes()

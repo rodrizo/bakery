@@ -5,25 +5,28 @@ using System.Data;
 
 namespace Panaderia.Services
 {
-    public interface IRecetaService
+    public interface IPedidoService
     {
-        List<object> ObtenerRecetas();
-        List<object> ObtenerItemsRecetas(int id);
-        string CrearItemReceta(int id, ItemReceta model);
-        string EditarItemReceta(int id, ItemReceta model);
+        List<object> ObtenerPedidos(int id);
+        /*
+        List<object> ObtenerItemsPedido(int pedidoId);
+        string CrearPedido(int sucursalId, Pedido model);
+        string CrearPedidoItem(int pedidoId, PedidoPan model);
+        string EditarPedido(int id, Pedido model);
+        string EditarPedidoItem(int id, PedidoPan model);*/
     }
 
-    public class RecetaService : IRecetaService
+    public class PedidoService : IPedidoService
     {
         private readonly IPanaderiaDbContext _dbContext;
 
-        public RecetaService(IPanaderiaDbContext dbContext) => this._dbContext = dbContext;
+        public PedidoService(IPanaderiaDbContext dbContext) => this._dbContext = dbContext;
 
-        #region Obtener Receta
-        //Método para obtener listado de sucursales
-        public List<object> ObtenerRecetas()
+        #region Obtener Pedidos
+        //Método para obtener listado de pedidos
+        public List<object> ObtenerPedidos(int id)
         {
-            List<object> recetas = new List<object>();
+            List<object> pedidos = new List<object>();
 
             using (OracleConnection con = _dbContext.GetConn())
             {
@@ -34,26 +37,32 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT r.RecetaId, p.Nombre AS Pan, r.Descripcion, r.IsActive FROM Recetas r INNER JOIN Panes p ON p.PanId = r.Panid " +
-                            "AND p.IsActive = 1" +
-                            "WHERE r.IsActive = 1";
+                        cmd.CommandText = "SELECT p.PedidoId, p.FechaPedido, p.Ruta, p.Estado, p.Comentarios, p.IsActive, s.Nombre AS Sucursal " +
+                            "FROM Pedidos p " +
+                            "INNER JOIN Sucursales s ON s.SucursalId = p.SucursalId " +
+                            "AND s.IsActive = 1 " +
+                            $"AND p.SucursalId = NVL({id}, p.SucursalId)" +
+                            " WHERE p.IsActive = 1";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            var receta = new
+                            var pedido = new
                             {
-                                RecetaId = Convert.ToInt32(reader["RecetaId"]),
-                                Pan = reader["Pan"].ToString(),
-                                Descripcion = reader["Descripcion"].ToString(),
+                                PedidoId = Convert.ToInt32(reader["PedidoId"]),
+                                FechaPedido = Convert.ToDateTime(reader["FechaPedido"]),
+                                Ruta = reader["Ruta"].ToString(),
+                                Estado = reader["Estado"].ToString(),
+                                Comentarios = reader["Comentarios"].ToString(),
                                 IsActive = reader["IsActive"].ToString(),
+                                Sucursal = reader["Sucursal"].ToString(),
                             };
-                            recetas.Add(receta);
+                            pedidos.Add(pedido);
                         }
                         reader.Dispose();
-                        return recetas;
+                        return pedidos;
                     }
                     catch (Exception ex)
                     {
@@ -67,7 +76,7 @@ namespace Panaderia.Services
             }
         }
         #endregion
-
+        /*
         #region Obtener Receta y sus items
         //Método para obtener listado de sucursales
         public List<object> ObtenerItemsRecetas(int id)
@@ -250,5 +259,6 @@ namespace Panaderia.Services
             }
         }
         #endregion
+        */
     }
 }
