@@ -1,10 +1,3 @@
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.csproj.AssemblyReference.cache
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.AssemblyInfoInputs.cache
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.AssemblyInfo.cs
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.csproj.CoreCompileInputs.cache
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\appsettings.json
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Panaderia.exe
@@ -38,6 +31,13 @@ C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\runtimes\w
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\PanaderiaModels.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\PanaderiaModels.pdb
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.csproj.AssemblyReference.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.AssemblyInfoInputs.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.AssemblyInfo.cs
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.csproj.CoreCompileInputs.cache
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\Panaderia.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\staticwebassets\msbuild.Panaderia.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\staticwebassets\msbuild.build.Panaderia.props
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Panaderia.props

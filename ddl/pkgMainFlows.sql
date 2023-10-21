@@ -72,7 +72,7 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
             END IF;
         ELSIF (p_PedidoId IS NULL) THEN
             INSERT INTO Pedidos VALUES ((SELECT MAX(PedidoId)+1 FROM Pedidos),p_FechaPedido,
-            p_Ruta,p_Estado, p_Comentarios, p_SucursalId, 1);
+            p_Ruta,p_Estado, p_Comentarios, 1, p_SucursalId);
                 p_salida:='1';  --Código para determinar inserts
             COMMIT;
         END IF;
@@ -101,7 +101,7 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
             ELSIF (p_IsActive IS NOT NULL) THEN
                 UPDATE PedidoPan pp
                 SET pp.IsActive = '0'
-                WHERE pp.PedidoId = p_PedidoId;
+                WHERE pp.Id = p_Id;
                     p_salida:='3'; --Código para determinar deletes
                 COMMIT;
             END IF;

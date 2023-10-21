@@ -14,5 +14,6 @@ namespace PanaderiaModels.Entities
         public string? Estado { get; set; }
         public string? Comentarios { get; set; }
         public string? IsActive { get; set; }
+        public int SucursalId { get; set; }
     }
 }

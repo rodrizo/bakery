@@ -7,11 +7,11 @@ namespace Panaderia.Services
 {
     public interface IPedidoService
     {
-        List<object> ObtenerPedidos(int id);
-        /*
-        List<object> ObtenerItemsPedido(int pedidoId);
+        List<object> ObtenerPedidos(int sucursalId);
+        List<object> ObtenerItemsPedido(int id);
         string CrearPedido(int sucursalId, Pedido model);
         string CrearPedidoItem(int pedidoId, PedidoPan model);
+        /*
         string EditarPedido(int id, Pedido model);
         string EditarPedidoItem(int id, PedidoPan model);*/
     }
@@ -24,7 +24,7 @@ namespace Panaderia.Services
 
         #region Obtener Pedidos
         //Método para obtener listado de pedidos
-        public List<object> ObtenerPedidos(int id)
+        public List<object> ObtenerPedidos(int sucursalId)
         {
             List<object> pedidos = new List<object>();
 
@@ -41,7 +41,7 @@ namespace Panaderia.Services
                             "FROM Pedidos p " +
                             "INNER JOIN Sucursales s ON s.SucursalId = p.SucursalId " +
                             "AND s.IsActive = 1 " +
-                            $"AND p.SucursalId = NVL({id}, p.SucursalId)" +
+                            $"AND p.SucursalId = NVL({sucursalId}, p.SucursalId)" +
                             " WHERE p.IsActive = 1";
 
                         //Execute the command and use DataReader to display the data
@@ -76,12 +76,12 @@ namespace Panaderia.Services
             }
         }
         #endregion
-        /*
-        #region Obtener Receta y sus items
-        //Método para obtener listado de sucursales
-        public List<object> ObtenerItemsRecetas(int id)
+
+        #region Obtener Items de Pedido
+        //Método para obtener items de un pedido
+        public List<object> ObtenerItemsPedido(int id)
         {
-            List<object> recetas = new List<object>();
+            List<object> items = new List<object>();
 
             using (OracleConnection con = _dbContext.GetConn())
             {
@@ -92,37 +92,34 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT r.RecetaId, ri.Id AS ItemId, p.Nombre, ig.Nombre AS Ingrediente, ri.Descripcion, ri.Cantidad, ri.IsActive " +
-                            "FROM Recetas r " +
-                            "INNER JOIN Panes p ON p.PanId = r.PanId " +
-                            "AND p.IsActive = 1 " +
-                            "INNER JOIN RecetaIngrediente ri ON ri.RecetaId = r.RecetaId " +
-                            "AND ri.IsActive = 1 " +
-                            "INNER JOIN Ingredientes ig ON ig.IngredienteId = ri.IngredienteId " +
-                            "AND ig.IsActive = 1 " +
-                            "WHERE r.IsActive = 1" +
-                            $"AND r.RecetaId = NVL({id}, r.RecetaId)" +
-                            $"ORDER BY ri.Id ASC";
+                        cmd.CommandText = "SELECT pp.Id, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive " +
+                            "FROM PedidoPan pp " +
+                            "INNER JOIN Pedidos p ON p.PedidoId = pp.PedidoId " +
+                            "INNER JOIN Panes ps ON ps.PanId = pp.PanId " +
+                            "INNER JOIN Sucursales s ON s.SucursalId = p.SucursalId " +
+                            "    AND s.IsActive = 1 " +
+                            "WHERE pp.IsActive = 1 " +
+                            $"AND pp.PedidoId = NVL({id}, pp.PedidoId)";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            var receta = new
+                            var item = new
                             {
-                                RecetaId = Convert.ToInt32(reader["RecetaId"]),
-                                ItemId = Convert.ToInt32(reader["ItemId"]),
-                                Nombre = reader["Nombre"].ToString(),
-                                Ingrediente = reader["Ingrediente"].ToString(),
-                                Descripcion = reader["Descripcion"].ToString(),
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Pan = reader["Pan"].ToString(),
+                                PrecioUnitario = Convert.ToDouble(reader["PrecioUnitario"]),
+                                Sucursal = reader["Sucursal"].ToString(),
                                 Cantidad = reader["Cantidad"].ToString(),
-                                IsActive = reader["IsActive"].ToString()
+                                Comentarios = reader["Comentarios"].ToString(),
+                                IsActive = reader["IsActive"].ToString(),
                             };
-                            recetas.Add(receta);
+                            items.Add(item);
                         }
                         reader.Dispose();
-                        return recetas;
+                        return items;
                     }
                     catch (Exception ex)
                     {
@@ -137,9 +134,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region Agregar Item de una Receta
-        //Método para agregar un Item de una Receta
-        public string CrearItemReceta(int id, ItemReceta model)
+        #region Agregar Pedido
+        //Método para agregar un Pedido
+        public string CrearPedido(int sucursalId, Pedido model)
         {
             string salida;
 
@@ -152,18 +149,19 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMainFlows.agregar_item_receta";
+                        cmd.CommandText = "pkgMainFlows.agregar_pedido";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_Id", OracleDbType.Int32).Value = null;
-                        cmd.Parameters.Add("p_RecetaId", OracleDbType.Int32).Value = model.RecetaId;
-                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Int32).Value = model.IngredienteId;
-                        cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;
-                        cmd.Parameters.Add("p_Cantidad", OracleDbType.Varchar2).Value = model.Cantidad;
+                        cmd.Parameters.Add("p_PedidoId", OracleDbType.Int32).Value = null;
+                        cmd.Parameters.Add("p_FechaPedido", OracleDbType.Date).Value = model.FechaPedido;
+                        cmd.Parameters.Add("p_Ruta", OracleDbType.Varchar2).Value = model.Ruta;
+                        cmd.Parameters.Add("p_Estado", OracleDbType.Varchar2).Value = model.Estado;
+                        cmd.Parameters.Add("p_Comentarios", OracleDbType.Varchar2).Value = model.Comentarios;
                         cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = null;
+                        cmd.Parameters.Add("p_SucursalId", OracleDbType.Int32).Value = sucursalId;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
 
                         cmd.ExecuteNonQuery();
@@ -172,13 +170,13 @@ namespace Panaderia.Services
 
                         if (salida.Equals("1"))
                         {
-                            return "El item fue creado con éxito.";
+                            return "El pedido fue creado con éxito.";
                         } else if (salida.Equals("2"))
                         {
-                            return "El item fue editado con éxito.";
+                            return "El pedido fue editado con éxito.";
                         } else if(salida.Equals("3"))
                         {
-                            return "El item fue eliminado con éxito.";
+                            return "El pedido fue eliminado con éxito.";
                         }
                         else
                         {
@@ -198,9 +196,9 @@ namespace Panaderia.Services
         }
         #endregion
 
-        #region Editar Item de una Receta
-        //Método para editar un item de una receta
-        public string EditarItemReceta(int id, ItemReceta model)
+        #region Crear Item de un pedido
+        //Método para crear un item de un pedido
+        public string CrearPedidoItem(int pedidoId, PedidoPan model)
         {
             string salida;
 
@@ -213,19 +211,20 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMainFlows.agregar_item_receta";
+                        cmd.CommandText = "pkgMainFlows.agregar_pedido_item";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("p_Id", OracleDbType.Int32).Value = model.Id;
-                        cmd.Parameters.Add("p_RecetaId", OracleDbType.Int32).Value = model.RecetaId;
-                        cmd.Parameters.Add("p_IngredienteId", OracleDbType.Int32).Value = model.IngredienteId;
-                        cmd.Parameters.Add("p_Descripcion", OracleDbType.Varchar2).Value = model.Descripcion;
-                        cmd.Parameters.Add("p_Cantidad", OracleDbType.Varchar2).Value = model.Cantidad;
-                        cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = model.IsActive;
+                        cmd.Parameters.Add("p_Id", OracleDbType.Int32).Value = null;
+                        cmd.Parameters.Add("p_PanId", OracleDbType.Int32).Value = model.PanId;
+                        cmd.Parameters.Add("p_PedidoId", OracleDbType.Int32).Value = pedidoId;
+                        cmd.Parameters.Add("p_Cantidad", OracleDbType.Int32).Value = model.Cantidad;
+                        cmd.Parameters.Add("p_Comentarios", OracleDbType.Varchar2).Value = model.Comentarios;
+                        cmd.Parameters.Add("p_IsActive", OracleDbType.Char).Value = null;
                         cmd.Parameters.Add("p_salida", OracleDbType.Varchar2, 2000).Value = ParameterDirection.Output;
+
                         cmd.ExecuteNonQuery();
 
                         salida = cmd.Parameters["p_salida"].Value.ToString();
@@ -259,6 +258,5 @@ namespace Panaderia.Services
             }
         }
         #endregion
-        */
     }
 }

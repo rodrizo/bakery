@@ -26,14 +26,14 @@ namespace Panaderia.Controllers
             }
         }
 
-        /*
-        [HttpGet("{id}")]
-        public IActionResult ObtenerItemsRecetas([FromRoute] int id)
+        [Route("item/{id}")]
+        [HttpGet]
+        public IActionResult ObtenerItemsPedido([FromRoute] int id)
         {
             try
             {
-                var recetas = _recetaService.ObtenerItemsRecetas(id);
-                return Ok(recetas);
+                var items = _pedidoService.ObtenerItemsPedido(id);
+                return Ok(items);
             }
             catch (Exception exp)
             {
@@ -41,14 +41,14 @@ namespace Panaderia.Controllers
             }
         }
 
-        [Route("add/{id}")]
+        [Route("add/{sucursalId}")]
         [HttpPost]
-        public async Task<IActionResult> CrearItemReceta(int id, ItemReceta model)
+        public async Task<IActionResult> CrearPedido(int sucursalId, Pedido model)
         {
             try
             {
-                var recetas = _recetaService.CrearItemReceta(id, model);
-                return Ok(recetas);
+                var pedido = _pedidoService.CrearPedido(sucursalId, model);
+                return Ok(pedido);
             }
             catch (Exception exp)
             {
@@ -56,6 +56,22 @@ namespace Panaderia.Controllers
             }
         }
 
+        [Route("add/item/{pedidoId}")]
+        [HttpPost]
+        public async Task<IActionResult> CrearPedidoItem(int pedidoId, PedidoPan model)
+        {
+            try
+            {
+                var pedido = _pedidoService.CrearPedidoItem(pedidoId, model);
+                return Ok(pedido);
+            }
+            catch (Exception exp)
+            {
+                return Ok(exp.Message);
+            }
+        }
+
+        /*
 
         [HttpPut]
         public async Task<IActionResult> EditarItemReceta(int id, ItemReceta model)
