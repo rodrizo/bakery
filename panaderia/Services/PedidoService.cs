@@ -92,7 +92,9 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT pp.Id, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive " +
+                        cmd.CommandText = "SELECT pp.Id, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive, " +
+                            "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '00:00:01' AND '11:59:59' THEN pp.Cantidad ELSE NULL END AS Tomorrow, '' AS Resto," +
+                            "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '12:00:00' AND '23:59:59' THEN pp.Cantidad ELSE NULL END AS Tarde " +
                             "FROM PedidoPan pp " +
                             "INNER JOIN Pedidos p ON p.PedidoId = pp.PedidoId " +
                             "INNER JOIN Panes ps ON ps.PanId = pp.PanId " +
@@ -115,6 +117,9 @@ namespace Panaderia.Services
                                 Cantidad = reader["Cantidad"].ToString(),
                                 Comentarios = reader["Comentarios"].ToString(),
                                 IsActive = reader["IsActive"].ToString(),
+                                Tomorrow = reader["Tomorrow"].ToString(),
+                                Resto = reader["Resto"].ToString(),
+                                Tarde = reader["Tarde"].ToString()
                             };
                             items.Add(item);
                         }
@@ -240,6 +245,10 @@ namespace Panaderia.Services
                         else if (salida.Equals("3"))
                         {
                             return "El item fue eliminado con éxito.";
+                        }
+                        else if (Convert.ToInt32(salida) > 3)
+                        {
+                            return $"Solo hay {salida.Trim()} unidades de este pan. Por favor ingrese una cantidad menor a {salida.Trim()}.";
                         }
                         else
                         {

@@ -21,6 +21,8 @@ DROP TABLE RecetaIngrediente CASCADE CONSTRAINTS;
 
 DROP TABLE Sucursal CASCADE CONSTRAINTS;
 
+DROP TABLE Stock CASCADE CONSTRAINTS;
+
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
 -- predefined type, no DDL - XMLTYPE
@@ -115,6 +117,20 @@ CREATE TABLE Sucursal (
 
 ALTER TABLE Sucursal ADD CONSTRAINT sucursal_pk PRIMARY KEY ( SucursalId );
 
+CREATE TABLE Stock (
+    StockId         NUMBER(4) NOT NULL,
+    PanId   NUMBER(4) NOT NULL,
+    Cantidad NUMBER(4) NOT NULL,
+    Notas VARCHAR2 (250 CHAR),
+    FechaCreacion DATE,
+    FechaModificacion DATE,
+    IsActive CHAR(1)
+);
+
+ALTER TABLE Stock
+    ADD CONSTRAINT stock_pan_fk FOREIGN KEY ( PanId )
+        REFERENCES Panes ( PanId );
+        
 ALTER TABLE PanReceta
     ADD CONSTRAINT pan_receta_pan_fk FOREIGN KEY ( PanId )
         REFERENCES Pan ( PanId );

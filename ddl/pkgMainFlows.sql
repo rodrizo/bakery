@@ -89,32 +89,57 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
     BEGIN
         --Si p_PedidoId no es nulo, hay dos opciones -> Update o Delete
         IF (p_Id IS NOT NULL) THEN
-            --Si IsActive = NULL + PanId <> NULL -> Update sencillo
-            IF (p_IsActive IS NULL) THEN
-                UPDATE PedidoPan pp
-                SET pp.PanId = p_PanId, pp.PedidoId = p_PedidoId, pp.Cantidad = p_Cantidad, 
-                pp.Comentarios = p_Comentarios
-                WHERE pp.Id = p_Id;
-                COMMIT;
-                p_salida:='2'; -- Código para determinar updates
+                --Si IsActive = NULL + PanId <> NULL -> Update sencillo
+                IF (p_IsActive IS NULL) THEN
+                    UPDATE PedidoPan pp
+                    SET pp.PanId = p_PanId,-- pp.Cantidad = p_Cantidad, 
+                    pp.Comentarios = p_Comentarios
+                    WHERE pp.Id = p_Id;
+                    COMMIT;
+                    p_salida:='2'; -- Código para determinar updates
                 --Si IsActive <> NULL -> Delete
-            ELSIF (p_IsActive IS NOT NULL) THEN
-                UPDATE PedidoPan pp
-                SET pp.IsActive = '0'
-                WHERE pp.Id = p_Id;
-                    p_salida:='3'; --Código para determinar deletes
-                COMMIT;
-            END IF;
+                ELSIF (p_IsActive IS NOT NULL) THEN
+                    UPDATE PedidoPan pp
+                    SET pp.IsActive = '0'
+                    WHERE pp.Id = p_Id;
+                        p_salida:='3'; --Código para determinar deletes
+                    COMMIT;
+                END IF;
         ELSIF (p_Id IS NULL) THEN
-            INSERT INTO PedidoPan VALUES (p_PanId, p_PedidoId, p_Cantidad, p_Comentarios, 1, 
-            (SELECT MAX(Id)+1 FROM PedidoPan));
-                p_salida:='1';  --Código para determinar inserts
-            COMMIT;
+            DECLARE stockFuturo NUMBER; --Flag para validar inventario del pan
+            BEGIN
+                SELECT (Cantidad - p_Cantidad) INTO stockFuturo FROM Stock WHERE PanId = p_PanId AND IsActive = 1;
+                --Si el stock quedará en 0 o arriba de cero, podemos añadir el item al pedido
+                IF stockFuturo >= 0 THEN
+                    --Creando nuevo item del pedido
+                    INSERT INTO PedidoPan VALUES (p_PanId, p_PedidoId, p_Cantidad, p_Comentarios, 1, 
+                    (SELECT MAX(Id)+1 FROM PedidoPan));
+                    
+                    --Actualizando stock
+                    UPDATE Stock
+                    SET Cantidad = Cantidad - p_Cantidad
+                    WHERE PanId = p_PanId
+                    AND IsActive = 1;
+                    
+                    p_salida:='1';  --Código para determinar inserts
+                    
+                    COMMIT;
+                ELSE
+                    DECLARE salidaStock CHAR(10);
+                    BEGIN
+                        SELECT TO_CHAR(Cantidad) INTO salidaStock FROM Stock WHERE PanId = p_PanId AND IsActive = 1;
+                        --p_salida;
+                        p_salida:= salidaStock; --Código para determinar error de inventario
+                        ROLLBACK;   
+                    END;
+                END IF;
+                
+                EXCEPTION
+                WHEN OTHERS THEN
+                    p_salida:='0'; --Código para determinar errores
+                ROLLBACK;   
+            END;
         END IF;
-        EXCEPTION
-        WHEN OTHERS THEN
-            p_salida:='0'; --Código para determinar errores
-        ROLLBACK;   
     END agregar_pedido_item;
     
 END pkgMainFlows;
