@@ -9,6 +9,7 @@ builder.Services.AddScoped<IServiceIngrediente, IngredienteService>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
 builder.Services.AddScoped<IRecetaService, RecetaService>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
+builder.Services.AddScoped<IStockService, StockService>();
 
 // Add services to the container.
 builder.Services.AddControllers();

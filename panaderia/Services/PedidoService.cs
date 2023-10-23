@@ -154,7 +154,7 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMainFlows.agregar_pedido";
+                        cmd.CommandText = "pkgMainFlows.crud_pedido";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();
@@ -216,7 +216,7 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "pkgMainFlows.agregar_pedido_item";
+                        cmd.CommandText = "pkgMainFlows.crud_pedido_item";
 
                         //Execute the command and use DataReader to display the data
                         //OracleDataReader reader = cmd.ExecuteReader();

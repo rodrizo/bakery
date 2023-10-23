@@ -1,20 +1,23 @@
 
 CREATE OR REPLACE PACKAGE pkgMainFlows AS 
-    PROCEDURE agregar_item_receta (p_Id in NUMBER, p_RecetaId in NUMBER, p_IngredienteId in NUMBER, 
+    PROCEDURE crud_item_receta (p_Id in NUMBER, p_RecetaId in NUMBER, p_IngredienteId in NUMBER, 
     p_Descripcion in VARCHAR2, p_Cantidad in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
 
-    PROCEDURE agregar_pedido (p_PedidoId in NUMBER, p_FechaPedido in DATE, p_Ruta in VARCHAR2, p_Estado in VARCHAR2, 
+    PROCEDURE crud_pedido (p_PedidoId in NUMBER, p_FechaPedido in DATE, p_Ruta in VARCHAR2, p_Estado in VARCHAR2, 
     p_Comentarios in VARCHAR2, p_SucursalId in NUMBER, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
-    PROCEDURE agregar_pedido_item (p_Id in NUMBER, p_PanId in NUMBER, p_PedidoId in NUMBER, p_Cantidad in NUMBER, 
+    PROCEDURE crud_pedido_item (p_Id in NUMBER, p_PanId in NUMBER, p_PedidoId in NUMBER, p_Cantidad in NUMBER, 
     p_Comentarios in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
+    
+    PROCEDURE crud_stock (p_StockId in NUMBER, p_PanId in NUMBER, p_Cantidad in NUMBER, 
+    p_Notas in VARCHAR2, p_FechaCreacion in DATE, p_FechaModificacion in DATE, p_IsActive in CHAR, p_salida OUT VARCHAR2);
     
 END pkgMainFlows;
 
 
 CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
     
-    PROCEDURE agregar_item_receta (p_Id in NUMBER, p_RecetaId in NUMBER, p_IngredienteId in NUMBER, 
+    PROCEDURE crud_item_receta (p_Id in NUMBER, p_RecetaId in NUMBER, p_IngredienteId in NUMBER, 
     p_Descripcion in VARCHAR2, p_Cantidad in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     
@@ -46,9 +49,9 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
         WHEN OTHERS THEN
             p_salida:='0'; --Código para determinar errores
         ROLLBACK;
-    END agregar_item_receta;
+    END crud_item_receta;
     
-    PROCEDURE agregar_pedido (p_PedidoId in NUMBER, p_FechaPedido in DATE, p_Ruta in VARCHAR2, p_Estado in VARCHAR2, 
+    PROCEDURE crud_pedido (p_PedidoId in NUMBER, p_FechaPedido in DATE, p_Ruta in VARCHAR2, p_Estado in VARCHAR2, 
     p_Comentarios in VARCHAR2, p_SucursalId in NUMBER, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     BEGIN
@@ -80,10 +83,10 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
         WHEN OTHERS THEN
             p_salida:='0'; --Código para determinar errores
         ROLLBACK;
-    END agregar_pedido;
+    END crud_pedido;
     
     --missing this one to apply the logic
-    PROCEDURE agregar_pedido_item (p_Id in NUMBER, p_PanId in NUMBER, p_PedidoId in NUMBER, p_Cantidad in NUMBER, 
+    PROCEDURE crud_pedido_item (p_Id in NUMBER, p_PanId in NUMBER, p_PedidoId in NUMBER, p_Cantidad in NUMBER, 
     p_Comentarios in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2)
     IS
     BEGIN
@@ -92,13 +95,17 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                 --Si IsActive = NULL + PanId <> NULL -> Update sencillo
                 IF (p_IsActive IS NULL) THEN
                     UPDATE PedidoPan pp
-                    SET pp.PanId = p_PanId,-- pp.Cantidad = p_Cantidad, 
+                    SET --pp.PanId = p_PanId,-- pp.Cantidad = p_Cantidad, 
                     pp.Comentarios = p_Comentarios
                     WHERE pp.Id = p_Id;
                     COMMIT;
                     p_salida:='2'; -- Código para determinar updates
                 --Si IsActive <> NULL -> Delete
                 ELSIF (p_IsActive IS NOT NULL) THEN
+                    --Cuando se elimine un item del pedido, se sumará nuevamente la cantidad al stock de ese pan
+                    UPDATE Stock st
+                    SET st.Cantidad = (SELECT (Cantidad * st.Cantidad) FROM PedidoPan pp WHERE pp.Id = p_Id AND pp.IsActive = 1);
+                   
                     UPDATE PedidoPan pp
                     SET pp.IsActive = '0'
                     WHERE pp.Id = p_Id;
@@ -140,7 +147,30 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                 ROLLBACK;   
             END;
         END IF;
-    END agregar_pedido_item;
+    END crud_pedido_item;
+    
+    PROCEDURE crud_stock (p_StockId in NUMBER, p_PanId in NUMBER, p_Cantidad in NUMBER, 
+    p_Notas in VARCHAR2, p_FechaCreacion in DATE, p_FechaModificacion in DATE, p_IsActive in CHAR, p_salida OUT VARCHAR2)
+    IS
+    BEGIN
+        --Insertando datos en bitácora antes de ser modificados
+        INSERT INTO StockActivity 
+        SELECT (SELECT MAX(Id)+1 FROM StockActivity), st.StockId, st.PanId, st.Cantidad, st.Notas, st.FechaCreacion, st.FechaModificacion
+        FROM Stock st
+        WHERE st.StockId = p_StockId;
+        
+        COMMIT;
+        
+        --Editando stock
+        UPDATE Stock
+        SET Cantidad = p_Cantidad, Notas = p_Notas
+        WHERE StockId = p_StockId;
+        
+        COMMIT;
+        
+        p_salida:='2'; -- Código para determinar updates
+    
+    END crud_stock;
     
 END pkgMainFlows;
 

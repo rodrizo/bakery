@@ -23,6 +23,8 @@ DROP TABLE Sucursal CASCADE CONSTRAINTS;
 
 DROP TABLE Stock CASCADE CONSTRAINTS;
 
+DROP TABLE StockActivity CASCADE CONSTRAINTS;
+
 -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
 
 -- predefined type, no DDL - XMLTYPE
@@ -125,6 +127,17 @@ CREATE TABLE Stock (
     FechaCreacion DATE,
     FechaModificacion DATE,
     IsActive CHAR(1)
+);
+
+
+CREATE TABLE StockActivity (
+    Id NUMBER(4) NOT NULL,
+    StockId         NUMBER(4) NOT NULL,
+    PanId   NUMBER(4) NOT NULL,
+    Cantidad NUMBER(4) NOT NULL,
+    Notas VARCHAR2 (250 CHAR),
+    FechaCreacion DATE,
+    FechaModificacion DATE
 );
 
 ALTER TABLE Stock
