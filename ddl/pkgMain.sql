@@ -43,6 +43,10 @@ CREATE OR REPLACE PACKAGE BODY pkgMain AS
            
             --Creando receta inmediatamente para luego solo añadir detalles
             INSERT INTO Recetas VALUES ((SELECT MAX(RecetaId)+1 FROM Recetas),NULL, 1, (SELECT MAX(PanId) FROM Panes));
+            COMMIT;
+            
+            --Creando stock automáticamente para el nuevo pan que acaba de crearse
+            INSERT INTO Stock VALUES((SELECT MAX(StockId)+1 FROM Stock), (SELECT MAX(PanId)+1 FROM Panes), 500, NULL, SYSDATE, SYSDATE, 1);
                 p_salida:='1';  --Código para determinar inserts
             COMMIT;
         END IF;

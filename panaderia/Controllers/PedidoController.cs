@@ -12,7 +12,7 @@ namespace Panaderia.Controllers
 
         public PedidoController(IPedidoService pedidoService) => this._pedidoService = pedidoService;
 
-        [HttpGet("{id}")]
+        [HttpGet("getAll/{id}")]
         public IActionResult ObtenerPedidos([FromRoute] int id)
         {
             try
@@ -26,8 +26,22 @@ namespace Panaderia.Controllers
             }
         }
 
-        [Route("item/{id}")]
-        [HttpGet]
+
+        [HttpGet("{pedidoId}")]
+        public IActionResult ObtenerPedidoById([FromRoute] int pedidoId)
+        {
+            try
+            {
+                var pedidos = _pedidoService.ObtenerPedidoById(pedidoId);
+                return Ok(pedidos);
+            }
+            catch (Exception exp)
+            {
+                return Ok(exp.Message);
+            }
+        }
+
+        [HttpGet("item/{id}")]
         public IActionResult ObtenerItemsPedido([FromRoute] int id)
         {
             try
@@ -71,14 +85,12 @@ namespace Panaderia.Controllers
             }
         }
 
-        /*
-
         [HttpPut]
-        public async Task<IActionResult> EditarItemReceta(int id, ItemReceta model)
+        public async Task<IActionResult> EditarPedido(int id, Pedido model)
         {
             try
             {
-                var recetas = _recetaService.EditarItemReceta(id, model);
+                var recetas = _pedidoService.EditarPedido(id, model);
                 return Ok(recetas);
             }
             catch (Exception exp)
@@ -86,6 +98,20 @@ namespace Panaderia.Controllers
                 return Ok(exp.Message);
             }
         }
-        */
+
+        [Route("item")]
+        [HttpPut]
+        public async Task<IActionResult> EditarPedidoItem(int id, PedidoPan model)
+        {
+            try
+            {
+                var recetas = _pedidoService.EditarPedidoItem(id, model);
+                return Ok(recetas);
+            }
+            catch (Exception exp)
+            {
+                return Ok(exp.Message);
+            }
+        }
     }
 }
