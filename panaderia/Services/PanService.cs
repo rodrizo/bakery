@@ -7,7 +7,7 @@ namespace Panaderia.Services
 {
     public interface IPanService
     {
-        List<Pan> ObtenerPanes();
+        Task<List<Pan>> ObtenerPanes();
         string CrearPan(Pan model);
         string EditarPan(int id, Pan model);
     }
@@ -20,7 +20,7 @@ namespace Panaderia.Services
 
         #region ObtenerPanes
         //Método para obtener listado de panes
-        public List<Pan> ObtenerPanes()
+        public async Task<List<Pan>> ObtenerPanes()
         {
             List<Pan> panes = new List<Pan>();
 

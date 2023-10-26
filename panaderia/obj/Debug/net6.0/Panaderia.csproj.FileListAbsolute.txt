@@ -5,8 +5,12 @@ C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Panaderia.
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Panaderia.runtimeconfig.json
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Panaderia.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Panaderia.pdb
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Microsoft.AspNetCore.NodeServices.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Microsoft.AspNetCore.SpaServices.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Oracle.ManagedDataAccess.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Rodney Rizo\Downloads\PanaderiaER\Panaderia\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll

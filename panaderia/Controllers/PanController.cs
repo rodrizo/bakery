@@ -13,7 +13,7 @@ namespace Panaderia.Controllers
         public PanController(IPanService panService) => this._panService = panService;
 
         [HttpGet]
-        public IActionResult ObtenerPanes()
+        public async Task<IActionResult> ObtenerPanes()
         {
             try
             {
