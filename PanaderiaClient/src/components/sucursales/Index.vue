@@ -9,7 +9,7 @@
         :items-per-page="20"
       >
         <template #item.options="{ item }">
-          <v-btn icon="mdi-pencil" variant="text" :to="`/sucursal/pedidos/${item.sucursalId}`"></v-btn>
+          <v-btn icon="mdi-list-box" variant="text" :to="`/sucursal/pedidos/${item.sucursalId}`"></v-btn>
         </template>
       </v-data-table>
     </v-container>

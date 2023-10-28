@@ -1,4 +1,3 @@
-
 CREATE OR REPLACE PACKAGE pkgMainFlows AS 
     PROCEDURE crud_item_receta (p_Id in NUMBER, p_RecetaId in NUMBER, p_IngredienteId in NUMBER, 
     p_Descripcion in VARCHAR2, p_Cantidad in VARCHAR2, p_IsActive in CHAR, p_salida OUT VARCHAR2);
@@ -105,10 +104,10 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                     --Cuando se elimine un item del pedido, se sumará nuevamente la cantidad al stock de ese pan
                     UPDATE Stock st
                     SET st.Cantidad = (SELECT (Cantidad + st.Cantidad) FROM PedidoPan pp WHERE pp.Id = p_Id AND pp.IsActive = 1);
-                   
-                    UPDATE PedidoPan pp
-                    SET pp.IsActive = '0'
-                    WHERE pp.Id = p_Id;
+                    COMMIT;
+                    
+                    DELETE PedidoPan
+                    WHERE Id = p_Id;
                         p_salida:='3'; --Código para determinar deletes
                     COMMIT;
                 END IF;
@@ -132,12 +131,12 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                     
                     COMMIT;
                 ELSE
-                    DECLARE salidaStock CHAR(10);
+                    DECLARE salidaStock CHAR(100);
                     BEGIN
                         SELECT TO_CHAR(Cantidad) INTO salidaStock FROM Stock WHERE PanId = p_PanId AND IsActive = 1;
                         --p_salida;
-                        p_salida:= salidaStock; --Código para determinar error de inventario
-                        ROLLBACK;   
+                        p_salida:= salidaStock+10000; --Código para determinar error de inventario
+                        --ROLLBACK;   
                     END;
                 END IF;
                 
@@ -203,4 +202,17 @@ BEGIN
   pkgMainFlows.agregar_pedido_item(1, 1, 5, '5 panes de tipo 1', :p_salida);
 END;
 /
+
+
+
+VARIABLE p_salida VARCHAR2;
+
+BEGIN
+  
+  pkgMainFlows.crud_pedido_item(null, 1, 1, 5500, '10 panes franceces', '1', :p_salida);
+  
+END;
+/
+
+
 */

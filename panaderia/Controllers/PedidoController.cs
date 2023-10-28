@@ -41,17 +41,18 @@ namespace Panaderia.Controllers
             }
         }
 
-        [HttpGet("item/{id}")]
-        public IActionResult ObtenerItemsPedido([FromRoute] int id)
+        [HttpGet("item/{pedidoId}")]
+        public IActionResult ObtenerItemsPedido([FromRoute] int pedidoId)
         {
             try
             {
-                var items = _pedidoService.ObtenerItemsPedido(id);
+                var items = _pedidoService.ObtenerItemsPedido(pedidoId);
+
                 return Ok(items);
             }
             catch (Exception exp)
             {
-                return Ok(exp.Message);
+                return BadRequest(exp.Message);
             }
         }
 
@@ -77,7 +78,9 @@ namespace Panaderia.Controllers
             try
             {
                 var pedido = _pedidoService.CrearPedidoItem(pedidoId, model);
-                return Ok(pedido);
+
+                return ((pedido).Contains("Solo") || (pedido).Contains("Error")) ? BadRequest(pedido) : Ok(pedido);
+
             }
             catch (Exception exp)
             {

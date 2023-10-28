@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.AspNetCore.Mvc;
+using Oracle.ManagedDataAccess.Client;
 using Panaderia.Context;
 using PanaderiaModels.Entities;
 using System.Data;
@@ -9,7 +10,7 @@ namespace Panaderia.Services
     {
         List<object> ObtenerPedidos(int sucursalId);
         Pedido ObtenerPedidoById(int pedidoId);
-        List<object> ObtenerItemsPedido(int id);
+        List<object> ObtenerItemsPedido(int pedidoId);
         string CrearPedido(int sucursalId, Pedido model);
         string CrearPedidoItem(int pedidoId, PedidoPan model);
         string EditarPedido(int id, Pedido model);
@@ -132,7 +133,7 @@ namespace Panaderia.Services
 
         #region Obtener Items de Pedido
         //Método para obtener items de un pedido
-        public List<object> ObtenerItemsPedido(int id)
+        public List<object> ObtenerItemsPedido(int pedidoId)
         {
             List<object> items = new List<object>();
 
@@ -145,7 +146,7 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT pp.Id, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive, " +
+                        cmd.CommandText = "SELECT pp.Id AS ItemId, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive, " +
                             "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '00:00:01' AND '11:59:59' THEN pp.Cantidad ELSE NULL END AS Tomorrow, '' AS Resto," +
                             "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '12:00:00' AND '23:59:59' THEN pp.Cantidad ELSE NULL END AS Tarde " +
                             "FROM PedidoPan pp " +
@@ -154,7 +155,7 @@ namespace Panaderia.Services
                             "INNER JOIN Sucursales s ON s.SucursalId = p.SucursalId " +
                             "    AND s.IsActive = 1 " +
                             "WHERE pp.IsActive = 1 " +
-                            $"AND pp.PedidoId = NVL({id}, pp.PedidoId)";
+                            $"AND pp.PedidoId = NVL({pedidoId}, pp.PedidoId)";
 
                         //Execute the command and use DataReader to display the data
                         OracleDataReader reader = cmd.ExecuteReader();
@@ -163,9 +164,9 @@ namespace Panaderia.Services
                         {
                             var item = new
                             {
-                                Id = Convert.ToInt32(reader["Id"]),
+                                Id = Convert.ToInt32(reader["ItemId"]),
                                 Pan = reader["Pan"].ToString(),
-                                PrecioUnitario = Convert.ToDouble(reader["PrecioUnitario"]),
+                                PrecioUnitario = reader["PrecioUnitario"].ToString(),
                                 Sucursal = reader["Sucursal"].ToString(),
                                 Cantidad = reader["Cantidad"].ToString(),
                                 Comentarios = reader["Comentarios"].ToString(),
@@ -299,9 +300,9 @@ namespace Panaderia.Services
                         {
                             return "El item fue eliminado con éxito.";
                         }
-                        else if (Convert.ToInt32(salida) > 3)
+                        else if (Convert.ToInt32(salida) >= 10000)
                         {
-                            return $"Solo hay {salida.Trim()} unidades de este pan. Por favor ingrese una cantidad menor a {salida.Trim()}.";
+                            return $"Solo hay {(Convert.ToInt32(salida) - 10000).ToString().Trim    ()} unidades de este pan. Por favor ingrese una cantidad menor o igual a    {(Convert.ToInt32(salida) - 10000).ToString().Trim()}.";
                         }
                         else
                         {

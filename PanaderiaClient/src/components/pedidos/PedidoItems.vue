@@ -3,7 +3,7 @@
     <div>
         
         <v-container class="mt-10">
-        <v-card-title class="text-center mt-4"><strong>Listado de pedidos de la sucursal {{ nombreSucursal }}</strong></v-card-title>
+        <v-card-title class="text-center mt-4"><strong>Items del pedido {{ this.$route.params.id }}</strong></v-card-title>
         <v-btn class="mt-2 ml-4 mb-4" color="teal-darken-2" prepend-icon="mdi-plus-thick" rounded="lg" :to="`/pedidos/add/${this.$route.params.id}`"><strong>Nuevo</strong></v-btn>
         <v-data-table
           :headers="headers"
@@ -11,8 +11,7 @@
           :items-per-page="20"
         >
           <template #item.options="{ item }">
-            <v-btn icon="mdi-plus" variant="text" :to="`/pedido/add/item/${item.pedidoId}`"></v-btn>
-            <v-btn icon="mdi-delete" variant="text" @click.stop="deletePedido(item.pedidoId)"></v-btn>
+            <v-btn icon="mdi-delete" variant="text" @click.stop="deleteItem(item.id)"></v-btn>
           </template>
         </v-data-table>
       </v-container>
@@ -23,19 +22,21 @@
   <script>
   export default {
     mounted() {
-      this.getPedidos(),
-      this.getSucursales()
+      this.getPedidoItems()
     },
     data() {
       return {
         nombreSucursal: '',
         headers: [
-          { align: 'start', key: 'pedidoId', title: 'PedidoId'},
-          { title: 'Fecha Pedido', key: 'fechaPedido' },
-          { title: 'Ruta', key: 'ruta' },
-          { title: 'Estado', key: 'estado' },
-          { title: 'Comentarios', key: 'comentarios' },
+          { align: 'start', key: 'id', title: 'Id'},
+          { title: 'Pan', key: 'pan' },
+          { title: 'Precio Unitario', key: 'precioUnitario' },
           { title: 'Sucursal', key: 'sucursal' },
+          { title: 'Cantidad', key: 'cantidad' },
+          { title: 'Comentarios', key: 'comentarios' },
+          { title: 'Mañana', key: 'tomorrow' },
+          { title: 'Resto', key: 'resto' },
+          { title: 'Tarde', key: 'tarde' },
           { key: 'options', title: 'Opciones', sortable: false},
         ],
         data: [],
@@ -51,9 +52,9 @@
         }
     },
     methods:{
-        async getPedidos(){
+        async getPedidoItems(){
             // Realiza una solicitud a la API para obtener los datos
-            fetch(`http://localhost:5191/api/pedido/getAll/${this.$route.params.id}`)
+            fetch(`http://localhost:5191/api/pedido/item/${this.$route.params.id}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -64,20 +65,8 @@
             });
         },
 
-        async getSucursales(){
-            fetch(`http://localhost:5191/api/sucursal`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                this.sucursales = data; // Asigna los datos a la propiedad 'data' para llenar la tabla
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        },
-
-        async deletePedido(id){
-          await fetch("http://localhost:5191/api/pedido?id="+id,
+        async deleteItem(id){
+          await fetch("http://localhost:5191/api/pedido/item?id="+id,
           {
               method: 'PUT',
               headers: {
@@ -85,17 +74,17 @@
               },
               body: JSON.stringify(
                   {
-                      'pedidoId': id,
-                      'fechaPedido': '1000-01-01',
-                      'ruta': '',
-                      'estado': '',
-                      'comentarios': '',
-                      'isActive': '0'
+                    'id': id,
+                    'panId': 0,
+                    'pedidoId': 0,
+                    'cantidad': 0,
+                    'comentarios': null,
+                    'isActive': "0"
                   }
               )
           })
           .then(response => {
-            this.getPedidos()
+            this.getPedidoItems()
             // console.log(response.json(), 'response')
           })
           .catch(error => {

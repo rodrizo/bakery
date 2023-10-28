@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Default from '../layouts/default/Default.vue'
 import Index from '../components/pedidos/Index.vue'
 import Create from '../components/pedidos/Create.vue'
+import CreateItem from '../components/pedidos/CreateItem.vue'
+import PedidoItems from '../components/pedidos/PedidoItems.vue'
 
 const routes = [
   {
@@ -21,6 +23,18 @@ const routes = [
     path: "/pedidos/add/:id",
     name: "pedidosAdd",
     component: Create,
+    meta: { auth: false }
+  },
+  {
+    path: "/pedido/add/item/:id",
+    name: "itemAdd",
+    component: CreateItem,
+    meta: { auth: false }
+  },
+  {
+    path: "/pedido/:id/items",
+    name: "pedidoItems",
+    component: PedidoItems,
     meta: { auth: false }
   },
 ];
