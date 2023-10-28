@@ -11,6 +11,9 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import { VDataTable } from 'vuetify/labs/VDataTable'
 
+const defaultTheme = localStorage.getItem('theme') || 'light';
+console.log(defaultTheme);
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {

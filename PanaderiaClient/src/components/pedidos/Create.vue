@@ -87,7 +87,7 @@
                     <v-btn
                     color="yellow-darken-1"
                     class="me-4 mt-4"
-                    :to="`/patients/`"
+                    :to="`/sucursal/pedidos/${this.$route.params.id}`"
                     prepend-icon="mdi-arrow-left"
                     rounded="lg"
                     >

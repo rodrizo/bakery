@@ -103,7 +103,9 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
                 ELSIF (p_IsActive IS NOT NULL) THEN
                     --Cuando se elimine un item del pedido, se sumará nuevamente la cantidad al stock de ese pan
                     UPDATE Stock st
-                    SET st.Cantidad = (SELECT (Cantidad + st.Cantidad) FROM PedidoPan pp WHERE pp.Id = p_Id AND pp.IsActive = 1);
+                    SET st.Cantidad = (SELECT (Cantidad + st.Cantidad) FROM PedidoPan pp WHERE pp.Id = p_Id AND pp.IsActive = 1)
+                    WHERE st.PanId = p_PanId;
+                    
                     COMMIT;
                     
                     DELETE PedidoPan
@@ -162,7 +164,7 @@ CREATE OR REPLACE PACKAGE BODY pkgMainFlows AS
         
         --Editando stock
         UPDATE Stock
-        SET Cantidad = p_Cantidad, Notas = p_Notas
+        SET Cantidad = p_Cantidad, Notas = p_Notas, FechaModificacion = SYSDATE
         WHERE StockId = p_StockId;
         
         COMMIT;

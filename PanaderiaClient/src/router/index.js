@@ -5,6 +5,8 @@ import Index from '../components/pedidos/Index.vue'
 import Create from '../components/pedidos/Create.vue'
 import CreateItem from '../components/pedidos/CreateItem.vue'
 import PedidoItems from '../components/pedidos/PedidoItems.vue'
+import Stock from '../components/stock/Index.vue'
+import UpdateStock from '../components/stock/UpdateStock.vue'
 
 const routes = [
   {
@@ -35,6 +37,18 @@ const routes = [
     path: "/pedido/:id/items",
     name: "pedidoItems",
     component: PedidoItems,
+    meta: { auth: false }
+  },
+  {
+    path: "/stock",
+    name: "stock",
+    component: Stock,
+    meta: { auth: false }
+  },
+  {
+    path: "/stock/:id",
+    name: "updateStock",
+    component: UpdateStock,
     meta: { auth: false }
   },
 ];

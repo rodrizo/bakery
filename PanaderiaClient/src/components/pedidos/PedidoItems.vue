@@ -3,15 +3,15 @@
     <div>
         
         <v-container class="mt-10">
-        <v-card-title class="text-center mt-4"><strong>Items del pedido {{ this.$route.params.id }}</strong></v-card-title>
-        <v-btn class="mt-2 ml-4 mb-4" color="teal-darken-2" prepend-icon="mdi-plus-thick" rounded="lg" :to="`/pedidos/add/${this.$route.params.id}`"><strong>Nuevo</strong></v-btn>
+        <v-card-title class="text-center mt-4 mb-4"><strong>Items del pedido {{ this.$route.params.id }}</strong></v-card-title>
+        <!-- <v-btn class="mt-2 ml-4 mb-4" color="teal-darken-2" prepend-icon="mdi-plus-thick" rounded="lg" :to="`/pedidos/add/${this.$route.params.id}`"><strong>Nuevo</strong></v-btn> -->
         <v-data-table
           :headers="headers"
           :items="data"
           :items-per-page="20"
         >
           <template #item.options="{ item }">
-            <v-btn icon="mdi-delete" variant="text" @click.stop="deleteItem(item.id)"></v-btn>
+            <v-btn icon="mdi-delete" variant="text" @click.stop="deleteItem(item.id, item.panId)"></v-btn>
           </template>
         </v-data-table>
       </v-container>
@@ -29,6 +29,7 @@
         nombreSucursal: '',
         headers: [
           { align: 'start', key: 'id', title: 'Id'},
+          { title: 'PanId', key: 'panId' },
           { title: 'Pan', key: 'pan' },
           { title: 'Precio Unitario', key: 'precioUnitario' },
           { title: 'Sucursal', key: 'sucursal' },
@@ -65,7 +66,7 @@
             });
         },
 
-        async deleteItem(id){
+        async deleteItem(id, panId){
           await fetch("http://localhost:5191/api/pedido/item?id="+id,
           {
               method: 'PUT',
@@ -75,7 +76,7 @@
               body: JSON.stringify(
                   {
                     'id': id,
-                    'panId': 0,
+                    'panId': panId,
                     'pedidoId': 0,
                     'cantidad': 0,
                     'comentarios': null,

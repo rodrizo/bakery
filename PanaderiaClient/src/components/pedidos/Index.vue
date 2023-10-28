@@ -5,11 +5,25 @@
         <v-container class="mt-10">
         <v-card-title class="text-center mt-4"><strong>Listado de pedidos de la sucursal {{ nombreSucursal }}</strong></v-card-title>
         <v-btn class="mt-2 ml-4 mb-4" color="teal-darken-2" prepend-icon="mdi-plus-thick" rounded="lg" :to="`/pedidos/add/${this.$route.params.id}`"><strong>Nuevo</strong></v-btn>
+        <v-text-field
+          v-model="search"
+          prepend-inner-icon="mdi-magnify"
+          label="Buscar"
+          single-line
+          hide-details
+          variant="outlined"
+        ></v-text-field>
         <v-data-table
           :headers="headers"
           :items="data"
           :items-per-page="20"
+          :search="search"
         >
+          <template #item.pedidoId="{ item }">
+            <td>
+              <router-link :to="`/pedido/${item.pedidoId}/items`">{{ item.pedidoId }}</router-link>
+            </td>
+          </template>
           <template #item.options="{ item }">
             <v-btn icon="mdi-plus" variant="text" :to="`/pedido/add/item/${item.pedidoId}`"></v-btn>
             <v-btn icon="mdi-delete" variant="text" @click.stop="deletePedido(item.pedidoId)"></v-btn>
@@ -28,6 +42,7 @@
     },
     data() {
       return {
+        search: '',
         nombreSucursal: '',
         headers: [
           { align: 'start', key: 'pedidoId', title: 'PedidoId'},

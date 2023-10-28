@@ -146,7 +146,7 @@ namespace Panaderia.Services
                         con.Open();
                         cmd.BindByName = true;
 
-                        cmd.CommandText = "SELECT pp.Id AS ItemId, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive, " +
+                        cmd.CommandText = "SELECT pp.Id AS ItemId, ps.PanId, ps.Nombre AS Pan, ps.PrecioUnitario, s.Nombre AS Sucursal, pp.Cantidad, pp.Comentarios, pp.IsActive, " +
                             "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '00:00:01' AND '11:59:59' THEN pp.Cantidad ELSE NULL END AS Tomorrow, '' AS Resto," +
                             "CASE WHEN (to_char(FechaPedido, 'hh24:mi:ss')) BETWEEN '12:00:00' AND '23:59:59' THEN pp.Cantidad ELSE NULL END AS Tarde " +
                             "FROM PedidoPan pp " +
@@ -165,6 +165,7 @@ namespace Panaderia.Services
                             var item = new
                             {
                                 Id = Convert.ToInt32(reader["ItemId"]),
+                                PanId = Convert.ToInt32(reader["PanId"]),
                                 Pan = reader["Pan"].ToString(),
                                 PrecioUnitario = reader["PrecioUnitario"].ToString(),
                                 Sucursal = reader["Sucursal"].ToString(),
@@ -288,7 +289,7 @@ namespace Panaderia.Services
 
                         salida = cmd.Parameters["p_salida"].Value.ToString();
 
-                        if (salida.Equals("1"))
+                       if (salida.Equals("1"))
                         {
                             return "El item fue creado con éxito.";
                         }
