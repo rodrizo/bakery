@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A259C7A9-4AC3-3F5A-C113-EB85D0634710" containerWithKeyObject="CCB8B2F9-9E5B-73A7-9938-537732E06346" localFKIndex="0C8B7D14-A54E-EC1A-027C-5A21A7AA0501" name="PEDIDOS_SUCURSALES_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:31:18 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<referredTableLongName>SUCURSALES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A7B3F420-4D4B-A76D-B45D-11259D31348B</referredTableID>
+<keyObject>EE2F4DB9-C173-E8D9-A452-73E4BB55C041</keyObject>
+<referredKeyID>EE2F4DB9-C173-E8D9-A452-73E4BB55C041</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>SUCURSALID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

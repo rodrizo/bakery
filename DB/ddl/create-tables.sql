@@ -5,29 +5,25 @@
 
 
 
-DROP TABLE Ingrediente CASCADE CONSTRAINTS;
+DROP TABLE Ingredientes CASCADE CONSTRAINTS;
 
-DROP TABLE Pan CASCADE CONSTRAINTS;
+DROP TABLE Panes CASCADE CONSTRAINTS;
 
 DROP TABLE PanReceta CASCADE CONSTRAINTS;
 
-DROP TABLE Pedido CASCADE CONSTRAINTS;
+DROP TABLE Pedidos CASCADE CONSTRAINTS;
 
 DROP TABLE PedidoPan CASCADE CONSTRAINTS;
 
-DROP TABLE Receta CASCADE CONSTRAINTS;
+DROP TABLE Recetas CASCADE CONSTRAINTS;
 
 DROP TABLE RecetaIngrediente CASCADE CONSTRAINTS;
 
-DROP TABLE Sucursal CASCADE CONSTRAINTS;
+DROP TABLE Sucursales CASCADE CONSTRAINTS;
 
 DROP TABLE Stock CASCADE CONSTRAINTS;
 
 DROP TABLE StockActivity CASCADE CONSTRAINTS;
-
--- predefined type, no DDL - MDSYS.SDO_GEOMETRY
-
--- predefined type, no DDL - XMLTYPE
 
 CREATE TABLE Ingrediente (
     IngredienteId NUMBER(4) NOT NULL,
@@ -38,14 +34,14 @@ CREATE TABLE Ingrediente (
     IsActive      CHAR(1)
 );
 
-ALTER TABLE ingrediente ADD CONSTRAINT ingrediente_pk PRIMARY KEY ( ingredienteid );
+ALTER TABLE ingredientes ADD CONSTRAINT ingrediente_pk PRIMARY KEY ( ingredienteid );
 
-CREATE TABLE Pan (
+CREATE TABLE Panes (
     PanId             NUMBER(4) NOT NULL,
     Nombre            VARCHAR2(75),
-    PrecioUnitario    NUMBER(5),
+    PrecioUnitario    VARCHAR2(75),
     Descripcion       VARCHAR2(1250),
-    TiempoPreparacion NUMBER(2),
+    TiempoPreparacion VARCHAR2(75),
     IsActive          CHAR(1)
 );
 
@@ -65,10 +61,9 @@ CREATE TABLE PanReceta (
 ALTER TABLE PanReceta ADD CONSTRAINT pan_receta_pk PRIMARY KEY ( PanId,
                                                                   RecetaId );
 
-CREATE TABLE Pedido (
+CREATE TABLE Pedidos (
     PedidoId            NUMBER(4) NOT NULL,
     FechaPedido         DATE,
-    Cantidad            NUMBER(4),
     Ruta                VARCHAR2(75 CHAR),
     Estado              VARCHAR2(250 CHAR),
     Comentarios         VARCHAR2(250 CHAR),
@@ -82,7 +77,10 @@ ALTER TABLE Pedido ADD CONSTRAINT pedido_pk PRIMARY KEY ( PedidoId,
 CREATE TABLE PedidoPan (
     PanId         NUMBER(4) NOT NULL,
     PedidoId   NUMBER(4) NOT NULL,
-    SucursalId NUMBER(4) NOT NULL
+    Cantidad NUMBER(4),
+    Comentarios VARCHAR2(250 CHAR),
+    IsActive            CHAR(1),
+    Id NUMBER(4) NOT NULL
 );
 
 ALTER TABLE PedidoPan
@@ -90,24 +88,28 @@ ALTER TABLE PedidoPan
                                                PedidoId,
                                                SucursalId );
 
-CREATE TABLE Receta (
+CREATE TABLE Recetas (
     RecetaId    NUMBER(4) NOT NULL,
-    Cantidad    NUMBER(4),
     Descripcion VARCHAR2(250 CHAR),
-    IsActive    CHAR(1)
+    IsActive    CHAR(1),
+    PanId    NUMBER(4) NOT NULL
 );
 
 ALTER TABLE Receta ADD CONSTRAINT receta_pk PRIMARY KEY ( RecetaId );
 
 CREATE TABLE RecetaIngrediente (
     RecetaId           NUMBER(4) NOT NULL,
-    IngredienteId NUMBER(4) NOT NULL
+    IngredienteId NUMBER(4) NOT NULL,
+    Descripcion VARCHAR2(250 CHAR),
+    Cantidad VARCHAR2(20 CHAR),
+    IsActive    CHAR(1),
+    Id NUMBER(4) NOT NULL
 );
 
 ALTER TABLE RecetaIngrediente ADD CONSTRAINT receta_ingrediente_pk PRIMARY KEY ( RecetaId,
                                                                                   IngredienteId );
 
-CREATE TABLE Sucursal (
+CREATE TABLE Sucursales (
     SucursalId       NUMBER(4) NOT NULL,
     Nombre           VARCHAR2(250 CHAR),
     Direccion        VARCHAR2(750 CHAR),
@@ -175,47 +177,4 @@ ALTER TABLE Pedido
         REFERENCES Sucursal ( SucursalId );
 
 
-
--- Oracle SQL Developer Data Modeler Summary Report: 
--- 
--- CREATE TABLE                             8
--- CREATE INDEX                             0
--- ALTER TABLE                             15
--- CREATE VIEW                              0
--- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
--- CREATE PROCEDURE                         0
--- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
--- ALTER TRIGGER                            0
--- CREATE COLLECTION TYPE                   0
--- CREATE STRUCTURED TYPE                   0
--- CREATE STRUCTURED TYPE BODY              0
--- CREATE CLUSTER                           0
--- CREATE CONTEXT                           0
--- CREATE DATABASE                          0
--- CREATE DIMENSION                         0
--- CREATE DIRECTORY                         0
--- CREATE DISK GROUP                        0
--- CREATE ROLE                              0
--- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
--- CREATE MATERIALIZED VIEW                 0
--- CREATE MATERIALIZED VIEW LOG             0
--- CREATE SYNONYM                           0
--- CREATE TABLESPACE                        0
--- CREATE USER                              0
--- 
--- DROP TABLESPACE                          0
--- DROP DATABASE                            0
--- 
--- REDACTION POLICY                         0
--- 
--- ORDS DROP SCHEMA                         0
--- ORDS ENABLE SCHEMA                       0
--- ORDS ENABLE OBJECT                       0
--- 
--- ERRORS                                   0
--- WARNINGS                                 0
 

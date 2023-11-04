@@ -1,0 +1,160 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DEA957C9-AA07-A116-E7CB-BF27F0EA0471" name="RECETAINGREDIENTE">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETAINGREDIENTE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RECETAID" id="C0722F03-8731-B161-3905-53AACE217E22">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>RECETAID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D2A96F41-C910-232C-C76F-543B22D9DEC3" referredColumn="117AB574-FEFA-FA1F-3C1C-4715DF03F5FF"/>
+</associations>
+</Column>
+<Column name="INGREDIENTEID" id="441FBB9F-5B69-91F2-641A-0A5019EAC99B">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>INGREDIENTEID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C6090FE8-1DF3-A261-C9B5-2C5483DEF2C2" referredColumn="2784067D-456E-27A7-F357-0A045AB83C87"/>
+</associations>
+</Column>
+<Column name="DESCRIPCION" id="F70AA01D-2232-B317-1B88-908EF435A7B4">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>DESCRIPCION</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 BYTE</dataTypeSize>
+<ownDataTypeParameters>250 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CANTIDAD" id="57D58635-FBAF-C990-1AEC-847FAD574129">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>CANTIDAD</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISACTIVE" id="AD81D646-3241-2293-71F8-D65606D0B43E">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>ISACTIVE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="555F0087-5E1D-3FB7-5C78-0C8597320ACE">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAINGREDIENTE</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="971DA8EB-686D-C098-A794-73ADA46E1865" name="RECETA_INGREDIENTE_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETA_INGREDIENTE_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0722F03-8731-B161-3905-53AACE217E22"/>
+<colUsage columnID="441FBB9F-5B69-91F2-641A-0A5019EAC99B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8783E860-CBD4-3F11-158A-F4B067AF62A4" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="RECETA_INGREDIENTE_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETA_INGREDIENTE_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0722F03-8731-B161-3905-53AACE217E22"/>
+<colUsage columnID="441FBB9F-5B69-91F2-641A-0A5019EAC99B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="76EF09A3-90B7-D767-282D-1E05CAF72EDC" name="RECETA_INGREDIENTE_INGREDIENTE_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="441FBB9F-5B69-91F2-641A-0A5019EAC99B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9A701921-34B1-239F-B17B-16E45D5A04EC" name="RECETA_INGREDIENTE_RECETA_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0722F03-8731-B161-3905-53AACE217E22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

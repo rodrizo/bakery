@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04CC84AD-9BD2-644A-3957-C8821DEB73FD" name="RECETAS">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETAS</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RECETAID" id="117AB574-FEFA-FA1F-3C1C-4715DF03F5FF">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAS</sourceObjSchema>
+<sourceObjName>RECETAID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIPCION" id="84DD04CC-A3C2-6BFC-959B-7236CA2478BC">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAS</sourceObjSchema>
+<sourceObjName>DESCRIPCION</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISACTIVE" id="4D89B4D7-E481-980E-8F79-9979CD53A4DB">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAS</sourceObjSchema>
+<sourceObjName>ISACTIVE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PANID" id="7BB7A9C9-B9B1-86D3-D858-71977239746B">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>RECETAS</sourceObjSchema>
+<sourceObjName>PANID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="63F3273B-9C63-5EC9-5AE0-691C4C37C2DF" name="RECETA_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETA_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="117AB574-FEFA-FA1F-3C1C-4715DF03F5FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="778FE95E-5CB3-B9E0-6860-4CB92D45B472" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="RECETA_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETA_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="117AB574-FEFA-FA1F-3C1C-4715DF03F5FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

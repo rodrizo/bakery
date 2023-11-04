@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FE56772E-09C4-E898-004F-5A98B5C5D848" containerWithKeyObject="FC96BB0C-4778-3FA9-9F2E-67584FF33176" localFKIndex="26510DA6-881F-DB76-FEE7-9BEB195D9A37" name="STOCK_PAN_FK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>STOCK_PAN_FK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<referredTableLongName>PANES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>04D7DFA3-27E7-6DFF-B767-E6769634AC89</referredTableID>
+<keyObject>2939388D-6313-471A-B781-89E53917C8FD</keyObject>
+<referredKeyID>2939388D-6313-471A-B781-89E53917C8FD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>PANID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

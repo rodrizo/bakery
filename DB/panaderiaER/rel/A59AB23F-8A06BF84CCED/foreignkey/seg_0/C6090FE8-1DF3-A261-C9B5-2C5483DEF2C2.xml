@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C6090FE8-1DF3-A261-C9B5-2C5483DEF2C2" containerWithKeyObject="DEA957C9-AA07-A116-E7CB-BF27F0EA0471" localFKIndex="76EF09A3-90B7-D767-282D-1E05CAF72EDC" name="RECETA_INGREDIENTE_INGREDIENTE_FK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>RECETA_INGREDIENTE_INGREDIENTE_FK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<referredTableLongName>INGREDIENTES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>240F0072-7324-8178-3360-8B7546621892</referredTableID>
+<keyObject>16CFB70C-0153-7867-71C6-8CF7CC1C46F9</keyObject>
+<referredKeyID>16CFB70C-0153-7867-71C6-8CF7CC1C46F9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>INGREDIENTEID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

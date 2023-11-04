@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CCB8B2F9-9E5B-73A7-9938-537732E06346" name="PEDIDOS">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOS</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PEDIDOID" id="E53BAD48-08BD-A693-DC50-184964A013C7">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>PEDIDOID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHAPEDIDO" id="449B5454-3DE9-3F6E-C4C6-3D71720A72EA">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>FECHAPEDIDO</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RUTA" id="7C53BF8D-AD06-5692-4D3D-1CE9855BA8CF">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>RUTA</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>75 CHAR</dataTypeSize>
+<ownDataTypeParameters>75 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ESTADO" id="0B274D93-94E4-68AD-E5D0-42D2597C97A5">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>ESTADO</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMENTARIOS" id="5EDC30C5-CECF-D8E7-7454-F4DD5CF87578">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>COMENTARIOS</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISACTIVE" id="37FDB35A-3324-C04A-BC23-737919F53737">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>ISACTIVE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SUCURSALID" id="9B83B93A-B93D-AD3B-03E6-7631C965B59A">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOS</sourceObjSchema>
+<sourceObjName>SUCURSALID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A259C7A9-4AC3-3F5A-C113-EB85D0634710" referredColumn="DA8A42C0-D9DC-55A1-EEAB-BF71F75B9C91"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E43380F8-9877-BDF7-BDE5-35C477370D0E" name="PEDIDO_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDO_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E53BAD48-08BD-A693-DC50-184964A013C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B9118C8-C7C9-C209-ACF8-FA08712CFC5C" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="PEDIDO_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDO_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E53BAD48-08BD-A693-DC50-184964A013C7"/>
+<colUsage columnID="9B83B93A-B93D-AD3B-03E6-7631C965B59A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0C8B7D14-A54E-EC1A-027C-5A21A7AA0501" name="PEDIDOS_SUCURSALES_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:31:18 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B83B93A-B93D-AD3B-03E6-7631C965B59A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

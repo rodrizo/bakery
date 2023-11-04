@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="240F0072-7324-8178-3360-8B7546621892" name="INGREDIENTES">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>INGREDIENTES</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="INGREDIENTEID" id="2784067D-456E-27A7-F357-0A045AB83C87">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>INGREDIENTEID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="23F535A3-4BA0-091E-0F4A-E6B56541B974">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>NOMBRE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROVEEDOR" id="5B2E3C8E-2D4C-AC44-0244-C2A3CF3DCC1B">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>PROVEEDOR</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COSTOUNITARIO" id="11BAF8B8-23DD-5076-90D6-7FE3FF126DF4">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>COSTOUNITARIO</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHACOMPRA" id="169C30AE-ED45-E8E6-8876-F59B9B241F70">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>FECHACOMPRA</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISACTIVE" id="520E4580-3EE4-166D-6150-F9959A7096EE">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>INGREDIENTES</sourceObjSchema>
+<sourceObjName>ISACTIVE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="16CFB70C-0153-7867-71C6-8CF7CC1C46F9" name="INGREDIENTE_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>INGREDIENTE_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2784067D-456E-27A7-F357-0A045AB83C87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2A93C0E0-7C5A-5CD8-63C6-A5EF97B906B7" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="INGREDIENTE_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>INGREDIENTE_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2784067D-456E-27A7-F357-0A045AB83C87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

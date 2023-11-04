@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="PEDIDOS" directorySegmentName="seg_0" id="CCB8B2F9-9E5B-73A7-9938-537732E06346">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D0D2DB96-4DE7-4700-784B-1B804604AF78</segment>
+<tableSpace>AA4C7684-E3AC-C0AE-ECA7-9407D68C893F</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ESTADO" id="0B274D93-94E4-68AD-E5D0-42D2597C97A5">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ISACTIVE" id="37FDB35A-3324-C04A-BC23-737919F53737">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHAPEDIDO" id="449B5454-3DE9-3F6E-C4C6-3D71720A72EA">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COMENTARIOS" id="5EDC30C5-CECF-D8E7-7454-F4DD5CF87578">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RUTA" id="7C53BF8D-AD06-5692-4D3D-1CE9855BA8CF">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SUCURSALID" id="9B83B93A-B93D-AD3B-03E6-7631C965B59A">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PEDIDOID" id="E53BAD48-08BD-A693-DC50-184964A013C7">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PEDIDO_PK" id="4B9118C8-C7C9-C209-ACF8-FA08712CFC5C">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<schemaObject>7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED</schemaObject>
+<segment>1CED8C67-14E4-AF0C-A8AA-4B1A1BD2DB68</segment>
+<tableSpace>AA4C7684-E3AC-C0AE-ECA7-9407D68C893F</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="PEDIDOS_SUCURSALES_FK" id="0C8B7D14-A54E-EC1A-027C-5A21A7AA0501">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:31:18 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PEDIDO_PK" id="E43380F8-9877-BDF7-BDE5-35C477370D0E">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<segment>1CED8C67-14E4-AF0C-A8AA-4B1A1BD2DB68</segment>
+<tableSpace>AA4C7684-E3AC-C0AE-ECA7-9407D68C893F</tableSpace>
+<existingIndex>4B9118C8-C7C9-C209-ACF8-FA08712CFC5C</existingIndex>
+<indexSegment>1CED8C67-14E4-AF0C-A8AA-4B1A1BD2DB68</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

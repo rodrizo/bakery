@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PANES" directorySegmentName="seg_0" id="04D7DFA3-27E7-6DFF-B767-E6769634AC89">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DESCRIPCION" id="4A2B7C10-6C31-669B-04ED-A9113673C7B1">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PANID" id="51894B1D-B837-483E-43B2-0FA4385B8BDB">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TIEMPOPREPARACION" id="8A31FF4A-39D2-F3C7-A4A0-886DFB179050">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRECIOUNITARIO" id="AE9AB3A3-BE38-A858-D147-C8AA8FF984D0">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ISACTIVE" id="E6A59AB9-CDCA-1FAD-42DE-1649B2E6C33D">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOMBRE" id="F6501227-A5AF-F943-78E5-144CE890F8A8">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PAN_PK" id="75067B53-1068-003C-DF97-A030521A96B2">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<schemaObject>7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED</schemaObject>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PAN_PK" id="2939388D-6313-471A-B781-89E53917C8FD">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:17:23 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

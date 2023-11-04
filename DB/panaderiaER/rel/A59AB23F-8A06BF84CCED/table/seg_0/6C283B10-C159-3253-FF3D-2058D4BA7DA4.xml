@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6C283B10-C159-3253-FF3D-2058D4BA7DA4" name="PANRECETA">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PANRECETA</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PANID" id="43CF6BDE-2A40-6A13-4B50-6E1F0D3C9E5C">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PANRECETA</sourceObjSchema>
+<sourceObjName>PANID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="67B3EAAC-3131-5B68-8EBE-2162AA2C1104" referredColumn="51894B1D-B837-483E-43B2-0FA4385B8BDB"/>
+</associations>
+</Column>
+<Column name="RECETAID" id="023C791D-F7CB-3181-0526-3F66871AFD34">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PANRECETA</sourceObjSchema>
+<sourceObjName>RECETAID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BD89CF19-AB4C-2DFA-5376-9EA07D662F4F" referredColumn="117AB574-FEFA-FA1F-3C1C-4715DF03F5FF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DA482846-0E56-8ED7-F355-B68AB1204D42" name="PAN_RECETA_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PAN_RECETA_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="43CF6BDE-2A40-6A13-4B50-6E1F0D3C9E5C"/>
+<colUsage columnID="023C791D-F7CB-3181-0526-3F66871AFD34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7403DB7C-2C14-0BB5-C1B1-7C11B000D16B" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="PAN_RECETA_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PAN_RECETA_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="43CF6BDE-2A40-6A13-4B50-6E1F0D3C9E5C"/>
+<colUsage columnID="023C791D-F7CB-3181-0526-3F66871AFD34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="94178A22-2729-35F7-E210-623DA14117D4" name="PAN_RECETA_PAN_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="43CF6BDE-2A40-6A13-4B50-6E1F0D3C9E5C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DF18725D-7CEB-ACDD-FF4E-9B6362B2ABC2" name="PAN_RECETA_RECETA_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="023C791D-F7CB-3181-0526-3F66871AFD34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

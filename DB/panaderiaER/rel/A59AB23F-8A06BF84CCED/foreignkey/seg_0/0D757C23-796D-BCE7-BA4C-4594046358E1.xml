@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0D757C23-796D-BCE7-BA4C-4594046358E1" containerWithKeyObject="E7A5FAD6-E6B6-8E57-0F52-BE39089C6F67" localFKIndex="8A49C81F-FE5E-EFD6-E37A-3F1D8901A5F8" name="PEDIDOPAN_PEDIDOS_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:30:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<referredTableLongName>PEDIDOS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CCB8B2F9-9E5B-73A7-9938-537732E06346</referredTableID>
+<keyObject>E43380F8-9877-BDF7-BDE5-35C477370D0E</keyObject>
+<referredKeyID>E43380F8-9877-BDF7-BDE5-35C477370D0E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>PEDIDOID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

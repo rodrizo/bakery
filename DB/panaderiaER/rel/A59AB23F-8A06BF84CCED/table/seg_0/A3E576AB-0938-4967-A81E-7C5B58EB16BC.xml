@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A3E576AB-0938-4967-A81E-7C5B58EB16BC" name="STOCKACTIVITY">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>STOCKACTIVITY</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="6DF9C69A-6A34-894B-2B1E-F000AB5B7675">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STOCKID" id="5A2B0637-7600-B71A-21BE-897175E34960">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>STOCKID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4751EE75-4EEC-EB94-06B1-68518FDDBCE0" referredColumn="FB5754A9-B4AB-C9AB-9063-2AD4888EA537"/>
+</associations>
+</Column>
+<Column name="PANID" id="094CC231-DBE0-9B29-C341-823DE6035461">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>PANID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CANTIDAD" id="5E41BE33-B5A6-B08E-77C4-5DECEDF9D4A7">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>CANTIDAD</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTAS" id="28408609-78DE-6210-BEC8-0E5F5940B8D2">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>NOTAS</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHACREACION" id="E15A74B7-E96C-86EB-F0C2-F8ED0AC5575E">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>FECHACREACION</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHAMODIFICACION" id="CFF20680-3D21-8341-4756-D6499AF98288">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>STOCKACTIVITY</sourceObjSchema>
+<sourceObjName>FECHAMODIFICACION</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="779A5CBC-F721-80F8-71B0-FF353CCDAC6C" name="STOCKACTIVITY_STOCK_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:31:58 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5A2B0637-7600-B71A-21BE-897175E34960"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

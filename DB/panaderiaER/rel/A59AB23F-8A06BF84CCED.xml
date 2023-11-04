@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="A59AB23F-CF56-C2FB-277B-8A06BF84CCED" mainViewID="A1D61F69-1E2A-EB3E-A8DB-F4253D176949">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:12:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>79C73AAF-E1A7-E669-7DF0-025EE81A2AFC</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>panaderia</connName>
+<connUser>SYSTEM</connUser>
+<connType>1</connType>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

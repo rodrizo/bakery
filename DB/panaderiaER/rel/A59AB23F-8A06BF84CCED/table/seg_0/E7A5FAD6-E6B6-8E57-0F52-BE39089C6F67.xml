@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E7A5FAD6-E6B6-8E57-0F52-BE39089C6F67" name="PEDIDOPAN">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDOPAN</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:50 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PANID" id="2771801E-4665-1500-BC4F-E16BEA37CAB3">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>PANID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A6AD0638-09CD-062D-E59C-210E46A3E513" referredColumn="51894B1D-B837-483E-43B2-0FA4385B8BDB"/>
+</associations>
+</Column>
+<Column name="PEDIDOID" id="829FB0AD-FF47-0359-4402-75401A73F364">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>PEDIDOID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0D757C23-796D-BCE7-BA4C-4594046358E1" referredColumn="E53BAD48-08BD-A693-DC50-184964A013C7"/>
+</associations>
+</Column>
+<Column name="CANTIDAD" id="5F4D59D1-9BAF-C45D-6813-8FFD7F7ACF4C">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>CANTIDAD</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMENTARIOS" id="E47D3E85-565D-2275-1304-A04B88DD47C1">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>COMENTARIOS</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 BYTE</dataTypeSize>
+<ownDataTypeParameters>250 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ISACTIVE" id="E7C74A39-FAA5-4849-170F-FCC2835F86AF">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>ISACTIVE</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="9CDDFFC2-C991-8447-7E70-115EDEC881AF">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>PEDIDOPAN</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:51 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="42B85889-ED8F-4FBC-EF23-330379C3398D" name="PEDIDO_PAN_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDO_PAN_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:53 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9CDDFFC2-C991-8447-7E70-115EDEC881AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9118F349-BA29-A971-77FC-740FBCF2805A" schemaObject="7155BCAE-2ACF-EC5D-465F-5AADC4DAA1ED" name="PEDIDO_PAN_PK">
+<sourceConnName>panaderia</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PEDIDO_PAN_PK</sourceObjName>
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:52 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2771801E-4665-1500-BC4F-E16BEA37CAB3"/>
+<colUsage columnID="829FB0AD-FF47-0359-4402-75401A73F364"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8DB78AD8-A390-14CB-779B-E8090FD8F572" name="PEDIDO_PAN_PAN_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:16:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2771801E-4665-1500-BC4F-E16BEA37CAB3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8A49C81F-FE5E-EFD6-E37A-3F1D8901A5F8" name="PEDIDOPAN_PEDIDOS_FK">
+<createdBy>Rodney Rizo</createdBy>
+<createdTime>2023-11-04 05:30:54 UTC</createdTime>
+<ownerDesignName>panaderiaER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="829FB0AD-FF47-0359-4402-75401A73F364"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
